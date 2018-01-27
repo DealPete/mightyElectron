@@ -20,6 +20,7 @@ public class AudioController : MonoBehaviour {
 		{
 			stem.volume = 0;
 		}
+		stingPlayer.volume = stingVolume;
 	}
 
 	public void Update(){
