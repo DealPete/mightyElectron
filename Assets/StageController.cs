@@ -25,7 +25,7 @@ public class StageController : MonoBehaviour {
 		Junction j3 = newJunction(4*Vector3.up);
 
 		Wire w1 = hookup(j1, j3, Direction.Left, Direction.Right, WireType.Plain);
-		hookup(j2, j3, Direction.Up, Direction.Left, WireType.LED);
+		//hookup(j2, j3, Direction.Up, Direction.Left, WireType.LED);
 
 		agent.containerType = ContainerType.Wire;
 		agent.container = w1.gameObject;

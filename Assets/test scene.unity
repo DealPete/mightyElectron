@@ -222,9 +222,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfc3c8547b0c00469155318711b2068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AgentPrefab: {fileID: 1892708015604562, guid: 9ffb270cdfbeb4d43ad5e3362a1fabee,
+  AgentPrefab: {fileID: 1091636258866834, guid: fee806b1ae42c4a34992520c52bce6ba,
     type: 2}
   WirePrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70, type: 2}
+  LEDPrefab: {fileID: 0}
+  ResistorPrefab: {fileID: 0}
+  CapacitorPrefab: {fileID: 0}
   JunctionPrefab: {fileID: 1364530030426724, guid: 4fbdf22fbb40ad743bd9edefecd91e80,
     type: 2}
   Agents: []
