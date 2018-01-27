@@ -6,7 +6,7 @@ public class Agent : MonoBehaviour {
 	public float speed;
 	public float wirePosition;
 	public ContainerType containerType;
-	public int containerIndex;
+	public GameObject container;
 	public Direction MovementIntent;
 
 }

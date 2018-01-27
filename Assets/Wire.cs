@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wire : MonoBehaviour {
-	public int startNode;
-	public int endNode;
+	public Junction startNode;
+	public Junction endNode;
 
 	public LineRenderer lineRenderer;
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class Wire : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void setEndpoints(Transform p1, Transform p2){
-		lineRenderer.SetPositions(new Vector3[] {p1.position, p2.position});
+	public void refreshPosition(){
+		lineRenderer.SetPositions(new Vector3[] {startNode.transform.position, endNode.transform.position});
 	}
 }
