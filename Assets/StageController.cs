@@ -17,12 +17,17 @@ public class StageController : MonoBehaviour {
 
 	//returns the object on which the player starts
 	public GameObject Level1 () {
-		Junction j1 = newJunction(Vector3.right);
-		Junction j2 = newJunction(10*Vector3.left);
-		Junction j3 = newJunction(4*Vector3.up);
+		Junction j1 = newJunction(new Vector3(0,0));
+		Junction j2 = newJunction(new Vector3(-10,0));
+		Junction j3 = newJunction(new Vector3(-10, 5));
+		Junction j4 = newJunction(new Vector3( -5, 5));
+		Junction j5 = newJunction(new Vector3 (0, 5));
 
-		Wire w1 = hookup(j1, j3, Direction.Left, Direction.Right, WireType.Plain);
-		hookup(j2, j3, Direction.Up, Direction.Left, WireType.Resistor);
+		Wire w1 = hookup(j1, j2, Direction.Left, Direction.Right, WireType.Plain);
+		hookup(j2, j3, Direction.Up, Direction.Down, WireType.Resistor);
+		hookup (j3, j4, Direction.Right, Direction.Left, WireType.LED);
+		hookup (j4, j5, Direction.Right, Direction.Left, WireType.Plain);
+		hookup (j5, j1, Direction.Down, Direction.Up, WireType.Capacitor);
 		return w1.gameObject;
 	}
 	void Start () {
