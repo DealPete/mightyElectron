@@ -19,6 +19,7 @@ public class Wire : MonoBehaviour {
 	}
 	public void refreshPosition(){
 		lineRenderer.SetPositions(new Vector3[] {startNode.transform.position, endNode.transform.position});
+		this.transform.position = Vector3.Lerp (startNode.transform.position, endNode.transform.position, 0.5f);
 	}
 	public virtual void updateAgent(Agent agent){
 		moveAgent (agent);
