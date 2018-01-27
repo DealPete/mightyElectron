@@ -21,18 +21,34 @@ public class StageController : MonoBehaviour {
 		Junctions.Add (j1);
 		Junction j2 = Instantiate (JunctionPrefab, 10*Vector3.left, Quaternion.identity).GetComponent<Junction> ();
 		Junctions.Add (j2);
-		Wire wire = Instantiate(WirePrefab).GetComponent<Wire>();
-		wire.setEndpoints (j1.transform, j2.transform);
-		Wires.Add (wire);
-		wire.startNode = 0;
-		wire.endNode = 1;
+		Junction j3 = Instantiate (JunctionPrefab, 4*Vector3.up, Quaternion.identity).GetComponent<Junction> ();
+		Junctions.Add (j3);
+
+		Wire w1 = Instantiate(WirePrefab).GetComponent<Wire>();
+		Wires.Add (w1);
+		Wire w2 = Instantiate(WirePrefab).GetComponent<Wire>();
+		Wires.Add (w2);
+
+		w1.setEndpoints (j1.transform, j2.transform);
+		w1.startNode = 0;
+		w1.endNode = 1;
+
+		w2.setEndpoints (j3.transform, j2.transform);
+		w2.startNode = 2;
+		w2.endNode = 1;
+
 
 		j1.addWire (Direction.Left, 0);
 		j2.addWire (Direction.Right, 0);
 
+		j2.addWire (Direction.Up, 1);
+		j3.addWire (Direction.Left, 1);
+
+
 		agent.containerType = ContainerType.Wire;
 		agent.containerIndex = 0;
 
+		this.gameObject.GetComponent<PlayerController> ().avatar = agent;
 	}
 	
 	// Update is called once per frame
@@ -60,6 +76,20 @@ public class StageController : MonoBehaviour {
 			} else {
 				Junction junction = Junctions[agent.containerIndex];
 				agent.transform.position = junction.transform.position;
+
+				if (junction.hasWireOnDirection (agent.MovementIntent)) {
+					int junctionIndex = agent.containerIndex;
+					int wireIndex = junction.getWire (agent.MovementIntent);
+					agent.containerType = ContainerType.Wire;
+					agent.containerIndex = wireIndex;
+					if (Wires [wireIndex].endNode == junctionIndex) {
+						agent.bearing = -1;
+						agent.wirePosition = 1.0f;
+					} else {
+						agent.bearing = 1;
+						agent.wirePosition = 0;
+					}
+				}
 			}
 		}
 	}

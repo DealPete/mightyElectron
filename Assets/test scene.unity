@@ -203,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1692044461}
   - component: {fileID: 1692044460}
+  - component: {fileID: 1692044462}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -226,6 +227,9 @@ MonoBehaviour:
   WirePrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70, type: 2}
   JunctionPrefab: {fileID: 1364530030426724, guid: 4fbdf22fbb40ad743bd9edefecd91e80,
     type: 2}
+  Agents: []
+  Junctions: []
+  Wires: []
 --- !u!4 &1692044461
 Transform:
   m_ObjectHideFlags: 0
@@ -239,3 +243,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1692044462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692044459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d716beedb990bbc43b73460c22294f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputThreshold: 0.2
+  avatar: {fileID: 0}

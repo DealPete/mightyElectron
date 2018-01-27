@@ -7,4 +7,10 @@ public class Junction : MonoBehaviour {
 	public void addWire(Direction d, int wireIndex){
 		wires.Add (d, wireIndex);
 	}
+	public bool hasWireOnDirection (Direction d){
+		return wires.ContainsKey(d);
+	}
+	public int getWire(Direction d) {
+		return wires [d];
+	}
 }
