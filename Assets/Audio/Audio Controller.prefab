@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4330701649785732}
   - component: {fileID: 82765749254581112}
   m_Layer: 0
-  m_Name: Stings
+  m_Name: StingPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -635,8 +635,11 @@ MonoBehaviour:
   - {fileID: 82765397802267704}
   - {fileID: 82584167295100280}
   - {fileID: 82432411969529082}
-  musicVolume: 0
-  stingPlayer: {fileID: 0}
+  musicVolume: 0.5
+  stingPlayer: {fileID: 82765749254581112}
   stings:
   - {fileID: 8300000, guid: 2fb7ccc81a8064787a4ec0f36c29dfe3, type: 3}
-  stingVolume: 0
+  - {fileID: 8300000, guid: eb35bf3fb8d594e43ab44344c37a3f34, type: 3}
+  - {fileID: 8300000, guid: 1633cf9e408db4819963038c1bcd98cc, type: 3}
+  - {fileID: 8300000, guid: efecbf8f0cbb4446d90c6aa89578bf14, type: 3}
+  stingVolume: 0.15
