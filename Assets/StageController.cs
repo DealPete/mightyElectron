@@ -78,7 +78,7 @@ public class StageController : MonoBehaviour {
 		return junction;
 	}
 
-	public Wire hookup(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget) {
+	Wire hookup(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget) {
 		Wire wire = Instantiate(WirePrefab).GetComponent<Wire>();
 
 		wire.startNode = source;
@@ -88,7 +88,8 @@ public class StageController : MonoBehaviour {
 		target.addWire(dirFromTarget, wire);
 		
 		wire.refreshPosition();
-
+		
+		Wires.Add(wire);
 		return wire;
 	}
 }
