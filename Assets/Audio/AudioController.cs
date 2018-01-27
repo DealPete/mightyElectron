@@ -6,23 +6,47 @@ using UnityEngine;
 Each musical file consists of 4 stems, each of which can be triggered with NextStem
  */
 public class AudioController : MonoBehaviour {
-	//setup music files
+	//BGM 
 	public AudioSource[] stems;
-	public float volume;
+	public float musicVolume;
 	private int currentStem=0;
-	// Use this for initialization
+	//Stings
+	public AudioSource stingPlayer;
+	public AudioClip[] stings;
+	public float stingVolume;
+
 	void Start () {
 		foreach (var stem in stems)
 		{
 			stem.volume = 0;
 		}
 	}
-	
+
+	public void Update(){
+
+		if (Input.GetKeyDown(KeyCode.U)){
+			PlaySting();
+		}
+
+		if (Input.GetKeyDown(KeyCode.I)){
+			NextStem();
+		}
+	}
+
 	//Adds the next stem
 	public void NextStem(){
 		if (currentStem >= stems.Length) return; //already at max
-		stems[currentStem].volume=volume;
+		stems[currentStem].volume=musicVolume;
 		currentStem++;
+	}
+
+	/// <summary>
+	/// Plays a random audio sting
+	/// </summary>
+	public void PlaySting(){
+		int sel = Random.Range(0,stings.Length);
+		// stingPlayer.clip = stings[sel];
+		stingPlayer.PlayOneShot(stings[sel]);
 	}
 
 }
