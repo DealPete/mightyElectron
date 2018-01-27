@@ -16,6 +16,7 @@ public class AudioController : MonoBehaviour {
 	public float stingVolume;
 
 	void Start () {
+		//mute all audio tracks (turned up in nextStem)
 		foreach (var stem in stems)
 		{
 			stem.volume = 0;
@@ -34,7 +35,9 @@ public class AudioController : MonoBehaviour {
 		}
 	}
 
-	//Adds the next stem
+	/// <summary>
+	/// Turns up the volume on the next BG music track (does nothing if all tracks are playing)
+	/// </summary>
 	public void NextStem(){
 		if (currentStem >= stems.Length) return; //already at max
 		stems[currentStem].volume=musicVolume;
