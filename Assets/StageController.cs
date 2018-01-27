@@ -15,21 +15,23 @@ public class StageController : MonoBehaviour {
 	public List<Junction> Junctions = new List<Junction>();
 	public List<Wire> Wires = new List<Wire>();
 
-	// Use this for initialization
-	void Start () {
-		Agent agent = Instantiate(AgentPrefab).GetComponent<Agent>();
-		Agents.Add (agent);
-
+	//returns the object on which the player starts
+	public GameObject Level1 () {
 		Junction j1 = newJunction(Vector3.right);
 		Junction j2 = newJunction(10*Vector3.left);
 		Junction j3 = newJunction(4*Vector3.up);
 
 		Wire w1 = hookup(j1, j3, Direction.Left, Direction.Right, WireType.Plain);
 		hookup(j2, j3, Direction.Up, Direction.Left, WireType.Resistor);
+		return w1.gameObject;
+	}
+	void Start () {
+		Agent agent = Instantiate(AgentPrefab).GetComponent<Agent>();
+		Agents.Add (agent);
 
 
+		agent.container = Level1 ();
 		agent.containerType = ContainerType.Wire;
-		agent.container = w1.gameObject;
 
 		this.gameObject.GetComponent<PlayerController> ().avatar = agent;
 	}
