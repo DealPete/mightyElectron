@@ -225,10 +225,10 @@ MonoBehaviour:
   AgentPrefab: {fileID: 1091636258866834, guid: fee806b1ae42c4a34992520c52bce6ba,
     type: 2}
   WirePrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70, type: 2}
-  LEDPrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70, type: 2}
+  LEDPrefab: {fileID: 1235363586470904, guid: e5b3c20b0449fd449adc8f15f5afca3f, type: 2}
   ResistorPrefab: {fileID: 1714357849886122, guid: ce16f66a7571f414b90eca467ccbe300,
     type: 2}
-  CapacitorPrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70,
+  CapacitorPrefab: {fileID: 1220066867002470, guid: 8392933d0a21299469cfdd6ad66b4833,
     type: 2}
   JunctionPrefab: {fileID: 1364530030426724, guid: 4fbdf22fbb40ad743bd9edefecd91e80,
     type: 2}
