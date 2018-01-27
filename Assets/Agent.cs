@@ -13,4 +13,7 @@ public class Agent : MonoBehaviour {
 	public void damage(int d){
 		energy -= 1;
 	}
+	public void setEnergy(int e){
+		energy = e;
+	}
 }
