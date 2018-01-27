@@ -6,6 +6,9 @@ public class StageController : MonoBehaviour {
 
 	public GameObject AgentPrefab;
 	public GameObject WirePrefab;
+	public GameObject LEDPrefab;
+	public GameObject ResistorPrefab;
+	public GameObject CapacitorPrefab;
 	public GameObject JunctionPrefab;
 
 	public List<Agent> Agents = new List<Agent>();
@@ -21,8 +24,8 @@ public class StageController : MonoBehaviour {
 		Junction j2 = newJunction(10*Vector3.left);
 		Junction j3 = newJunction(4*Vector3.up);
 
-		Wire w1 = hookup(j1, j2, Direction.Left, Direction.Right);
-		hookup(j2, j3, Direction.Up, Direction.Left);
+		Wire w1 = hookup(j1, j3, Direction.Left, Direction.Right, WireType.Plain);
+		hookup(j2, j3, Direction.Up, Direction.Left, WireType.LED);
 
 		agent.containerType = ContainerType.Wire;
 		agent.container = w1.gameObject;
@@ -78,8 +81,26 @@ public class StageController : MonoBehaviour {
 		return junction;
 	}
 
-	Wire hookup(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget) {
-		Wire wire = Instantiate(WirePrefab).GetComponent<Wire>();
+	Wire hookup(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget, WireType wireType) {
+		GameObject prefab;
+
+		switch (wireType) {
+			case WireType.LED:
+				prefab = LEDPrefab;
+				break;
+			case WireType.Resistor:
+				prefab = ResistorPrefab;
+				break;
+			case WireType.Capacitor:
+				prefab = CapacitorPrefab;
+				break;
+			default:
+			case WireType.Plain:
+				prefab = WirePrefab;
+				break;
+		}
+			
+		Wire wire = Instantiate(prefab).GetComponent<Wire>();
 
 		wire.startNode = source;
 		wire.endNode = target;
