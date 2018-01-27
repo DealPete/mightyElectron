@@ -9,4 +9,8 @@ public class Agent : MonoBehaviour {
 	public GameObject container;
 	public Direction MovementIntent;
 
+	public int energy = 5;
+	public void damage(int d){
+		energy -= 1;
+	}
 }

@@ -76,13 +76,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446155253960176}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1162e1045d7f39847a784e9197892018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startNode: 0
-  endNode: 0
+  startNode: {fileID: 0}
+  endNode: {fileID: 0}
   lineRenderer: {fileID: 120778937956751858}
 --- !u!120 &120778937956751858
 LineRenderer:

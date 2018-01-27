@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4126733314058504}
   - component: {fileID: 114540423588082708}
+  - component: {fileID: 81616822135724320}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -133,6 +134,13 @@ Transform:
   m_Father: {fileID: 4191997323044446}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &81616822135724320
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091636258866834}
+  m_Enabled: 1
 --- !u!95 &95613379811125404
 Animator:
   serializedVersion: 3
@@ -162,11 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bearing: 1
-  speed: 1
+  speed: 5
   wirePosition: 0.5
   containerType: 0
   container: {fileID: 0}
   MovementIntent: 0
+  energy: 5
 --- !u!198 &198091822814029422
 ParticleSystem:
   m_ObjectHideFlags: 1

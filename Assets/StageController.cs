@@ -25,7 +25,8 @@ public class StageController : MonoBehaviour {
 		Junction j3 = newJunction(4*Vector3.up);
 
 		Wire w1 = hookup(j1, j3, Direction.Left, Direction.Right, WireType.Plain);
-		//hookup(j2, j3, Direction.Up, Direction.Left, WireType.LED);
+		hookup(j2, j3, Direction.Up, Direction.Left, WireType.Resistor);
+
 
 		agent.containerType = ContainerType.Wire;
 		agent.container = w1.gameObject;
@@ -38,23 +39,7 @@ public class StageController : MonoBehaviour {
 		foreach (Agent agent in Agents) {
 			if (agent.containerType == ContainerType.Wire) {
 				Wire wire = agent.container.GetComponent<Wire>();
-				Vector3 startpoint = wire.startNode.transform.position;
-				Vector3 endpoint = wire.endNode.transform.position;
-				//move the agent along whatever direction it was going already
-				agent.wirePosition += (agent.speed * Time.deltaTime * agent.bearing)/Vector3.Distance(startpoint,endpoint);
-
-				//update the world position of agent
-				agent.transform.position = Vector3.Lerp (
-					startpoint, endpoint, agent.wirePosition);
-				//check to see if we hit an endpoint
-				if (agent.wirePosition >= 1.0f) {
-					agent.containerType = ContainerType.Junction;
-					agent.container = wire.endNode.gameObject;
-				}
-				if (agent.wirePosition <= 0) {
-					agent.containerType = ContainerType.Junction;
-					agent.container = wire.startNode.gameObject;
-				}
+				wire.updateAgent (agent);
 			} else {
 				Junction junction = agent.container.GetComponent<Junction>();
 				agent.transform.position = junction.transform.position;

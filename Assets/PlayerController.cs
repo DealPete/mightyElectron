@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 		float horiz = Input.GetAxisRaw ("Horizontal");
 		float vert = Input.GetAxisRaw ("Vertical");
 		if (Mathf.Abs (horiz) < inputThreshold && Mathf.Abs (vert) < inputThreshold) {
+			avatar.MovementIntent = Direction.NoDirection;
 			return;
 		}
 		if (Mathf.Abs (horiz) > Mathf.Abs (vert)) {

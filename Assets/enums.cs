@@ -1,4 +1,5 @@
 ﻿public enum Direction {
+	NoDirection,
 	Up,
 	Down,
 	Left,
@@ -9,7 +10,7 @@ public enum ContainerType {
 	Wire,
 	Junction
 }
-
+	
 public enum WireType {
 	Plain,
 	LED,
