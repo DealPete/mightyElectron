@@ -8,7 +8,6 @@ public class StageController : MonoBehaviour {
 	public GameObject WirePrefab;
 	public GameObject JunctionPrefab;
 
-
 	public List<Agent> Agents = new List<Agent>();
 	public List<Junction> Junctions = new List<Junction>();
 	public List<Wire> Wires = new List<Wire>();
@@ -17,31 +16,13 @@ public class StageController : MonoBehaviour {
 	void Start () {
 		Agent agent = Instantiate(AgentPrefab).GetComponent<Agent>();
 		Agents.Add (agent);
-		Junction j1 = Instantiate (JunctionPrefab, Vector3.right, Quaternion.identity).GetComponent<Junction> ();
-		Junctions.Add (j1);
-		Junction j2 = Instantiate (JunctionPrefab, 10*Vector3.left, Quaternion.identity).GetComponent<Junction> ();
-		Junctions.Add (j2);
-		Junction j3 = Instantiate (JunctionPrefab, 4*Vector3.up, Quaternion.identity).GetComponent<Junction> ();
-		Junctions.Add (j3);
 
-		Wire w1 = Instantiate(WirePrefab).GetComponent<Wire>();
-		Wires.Add (w1);
-		Wire w2 = Instantiate(WirePrefab).GetComponent<Wire>();
-		Wires.Add (w2);
+		Junction j1 = newJunction(Vector3.right);
+		Junction j2 = newJunction(10*Vector3.left);
+		Junction j3 = newJunction(4*Vector3.up);
 
-		w1.startNode = j1;
-		w1.endNode = j2;
-		w1.refreshPosition ();
-		w2.startNode = j2;
-		w2.endNode = j3;
-		w2.refreshPosition ();
-
-		j1.addWire (Direction.Left, w1);
-		j2.addWire (Direction.Right, w1);
-
-		j2.addWire (Direction.Up, w2);
-		j3.addWire (Direction.Left, w2);
-
+		Wire w1 = hookup(j1, j2, Direction.Left, Direction.Right);
+		hookup(j2, j3, Direction.Up, Direction.Left);
 
 		agent.containerType = ContainerType.Wire;
 		agent.container = w1.gameObject;
@@ -89,6 +70,26 @@ public class StageController : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+ 	Junction newJunction(Vector3 position) {
+		Junction junction = Instantiate (JunctionPrefab, position, Quaternion.identity).GetComponent<Junction> ();
+		Junctions.Add(junction);
+		return junction;
+	}
+
+	public Wire hookup(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget) {
+		Wire wire = Instantiate(WirePrefab).GetComponent<Wire>();
+
+		wire.startNode = source;
+		wire.endNode = target;
+
+		source.addWire(dirToTarget, wire);
+		target.addWire(dirFromTarget, wire);
+		
+		wire.refreshPosition();
+
+		return wire;
 	}
 }
 
