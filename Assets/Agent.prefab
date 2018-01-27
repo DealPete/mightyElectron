@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4809605373899022}
   - component: {fileID: 114749593904745850}
+  - component: {fileID: 81877684638155046}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -70,6 +71,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &81877684638155046
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892708015604562}
+  m_Enabled: 1
 --- !u!114 &114749593904745850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,7 +93,8 @@ MonoBehaviour:
   speed: 1
   wirePosition: 0.5
   containerType: 0
-  containerIndex: 0
+  container: {fileID: 0}
+  MovementIntent: 0
 --- !u!212 &212694079511722004
 SpriteRenderer:
   m_ObjectHideFlags: 1
