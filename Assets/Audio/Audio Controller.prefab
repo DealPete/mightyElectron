@@ -630,6 +630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91fbafecdd28e40f1a9eb5e1ce5dfae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songs:
+  - {fileID: 11400000, guid: eed17c55c92ee4980996c9af8f82aeec, type: 2}
+  - {fileID: 11400000, guid: e2c799ae2fd6b40a5a2834259bf79c09, type: 2}
   stems:
   - {fileID: 82629424276396606}
   - {fileID: 82765397802267704}
@@ -641,5 +644,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2fb7ccc81a8064787a4ec0f36c29dfe3, type: 3}
   - {fileID: 8300000, guid: eb35bf3fb8d594e43ab44344c37a3f34, type: 3}
   - {fileID: 8300000, guid: 1633cf9e408db4819963038c1bcd98cc, type: 3}
-  - {fileID: 8300000, guid: efecbf8f0cbb4446d90c6aa89578bf14, type: 3}
-  stingVolume: 0.15
+  ledSting: {fileID: 8300000, guid: e7c349ad7404c4b8d9d7e53b05a057f2, type: 3}
+  damageSting: {fileID: 8300000, guid: 9526607e8d4eb44eb8491d3b53b6c0cc, type: 3}
+  backSting: {fileID: 8300000, guid: a1fd478b52bcf4f2ca837201c65bc060, type: 3}
+  deathSting: {fileID: 8300000, guid: efecbf8f0cbb4446d90c6aa89578bf14, type: 3}
+  stingVolume: 0.05
