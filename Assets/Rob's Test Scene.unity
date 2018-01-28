@@ -473,6 +473,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114442075088993600, guid: a8cdc02cc231b427993aaa606f3775e4,
+        type: 2}
+      propertyPath: songs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.5717452
@@ -525,6 +530,18 @@ Prefab:
       propertyPath: backSting
       value: 
       objectReference: {fileID: 8300000, guid: a1fd478b52bcf4f2ca837201c65bc060, type: 3}
+    - target: {fileID: 114442075088993600, guid: a8cdc02cc231b427993aaa606f3775e4,
+        type: 2}
+      propertyPath: songs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: eed17c55c92ee4980996c9af8f82aeec,
+        type: 2}
+    - target: {fileID: 114442075088993600, guid: a8cdc02cc231b427993aaa606f3775e4,
+        type: 2}
+      propertyPath: songs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e2c799ae2fd6b40a5a2834259bf79c09,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
   m_IsPrefabParent: 0
