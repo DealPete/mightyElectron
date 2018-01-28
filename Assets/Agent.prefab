@@ -170,11 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bearing: 1
-  speed: 5
+  speed: 10
   wirePosition: 0.5
   containerType: 0
   container: {fileID: 0}
   MovementIntent: 0
+  lastWire: {fileID: 0}
   energy: 5
 --- !u!198 &198091822814029422
 ParticleSystem:

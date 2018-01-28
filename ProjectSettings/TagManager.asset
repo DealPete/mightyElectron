@@ -38,12 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Wires
+    uniqueID: 2834259481
+    locked: 0
+  - name: elements
+    uniqueID: 1424270675
+    locked: 0
+  - name: Player
+    uniqueID: 3096963817
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 588716447
-    locked: 0
-  - name: Dot
-    uniqueID: 526622065
     locked: 0

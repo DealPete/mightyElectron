@@ -11,9 +11,6 @@ public class Wire : MonoBehaviour {
 
 	public float tolerance = 0.2f;
 	bool triggered = false;
-	// Use this for initialization
-	void Start () {
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,8 +18,14 @@ public class Wire : MonoBehaviour {
 	}
 
 	public void refreshPosition(){
-		lineRenderer.SetPositions(new Vector3[] {startNode.transform.position, endNode.transform.position});
-		this.transform.position = Vector3.Lerp (startNode.transform.position, endNode.transform.position, 0.5f);
+		Vector3 startpos = startNode.transform.position;
+		Vector3 endpos = endNode.transform.position;
+
+		lineRenderer.SetPositions(new Vector3[] {startpos, endpos});
+		this.transform.position = Vector3.Lerp (startpos,endpos, 0.5f);
+		this.transform.rotation = Quaternion.FromToRotation (Vector3.left, startpos - endpos);
+
+
 	}
 	public virtual void updateAgent(Agent agent){
 		moveAgent (agent);
@@ -33,6 +36,7 @@ public class Wire : MonoBehaviour {
 			}
 		}
 		if (checkEndpoints (agent)) {
+			agent.lastWire = this;
 			triggered = false;
 		}
 	}
@@ -44,7 +48,6 @@ public class Wire : MonoBehaviour {
 		//update the world position of agent
 		agent.transform.position = Vector3.Lerp (
 			startpoint, endpoint, agent.wirePosition);
-		checkEndpoints (agent);
 	}
 	public bool checkEndpoints (Agent agent) {
 		if (agent.wirePosition >= 1.0f) {
