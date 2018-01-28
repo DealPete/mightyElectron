@@ -2,7 +2,7 @@
 using System;
 
 public class Agent : MonoBehaviour {
-	public static int START_ENERGY = 100;
+	public static int START_ENERGY = 5;
 
 	public int bearing; //+1 or -1
 	public float speed;

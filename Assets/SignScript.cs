@@ -4,18 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SignScript : MonoBehaviour {
-	public int energy;
-	public bool levelDone = false;
+	public string text;
 	
 	// Update is called once per frame
 	void Update () {
-		string text;
-		if (levelDone) {
-			text = "LEVEL COMPLETE!!";
-		} else {
-			text = "Energy: " + energy;
-		}
-			
 		base.GetComponent<Text>().text = text;
 	}
 }

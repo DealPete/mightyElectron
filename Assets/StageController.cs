@@ -17,6 +17,7 @@ public class StageController : MonoBehaviour {
 	public GameObject JunctionPrefab;
 	public GameObject SpeakerPrefab;
 
+	bool playerJustDied = false;
 	bool levelDone = false;
 	public int LEDtotal = 0;
 	public List<Agent> Agents;
@@ -34,7 +35,6 @@ public class StageController : MonoBehaviour {
 		Agents.Add (agent);
 
 		agent.energy = Agent.START_ENERGY;
-		sign.energy = agent.energy;
 
 		agent.container = setupLevel(level);
 		agent.containerType = ContainerType.Junction;
@@ -44,15 +44,16 @@ public class StageController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		bool playerJustDied = false;
 
 		if (!levelDone) {
 			foreach (Agent agent in Agents) {
-				sign.energy = agent.energy;
-
 				if (agent.energy <= 0) {
+					sign.text = "You are out of energy. Press FIRE to restart level.";
+					levelDone = true;
 					playerJustDied = true;
 				} else {
+					sign.text = "Energy: " + agent.energy;
+
 					if (agent.containerType == ContainerType.Wire) {
 						Wire wire = agent.container.GetComponent<Wire>();
 						wire.updateAgent (agent);
@@ -80,16 +81,15 @@ public class StageController : MonoBehaviour {
 			}
 
 			if (LED.activeCount == LEDtotal) {
+				sign.text = "LEVEL COMPLETE! Press Fire to continue";
 				levelDone = true;
-				sign.levelDone = true;
-			} else {
-				if (playerJustDied) {
-					restartScene();
-				}
+				playerJustDied = false;
 			}
 		} else {
 			if (Input.GetButton("Fire1")) {
-				StageController.level += 1;
+				if (!playerJustDied) {
+					StageController.level += 1;
+				} 
 				restartScene();
 			}
 		}
