@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg1
+    uniqueID: 4203066395
+    locked: 0
+  - name: bg2
+    uniqueID: 1965775041
+    locked: 0
   - name: Wires
     uniqueID: 2834259481
     locked: 0

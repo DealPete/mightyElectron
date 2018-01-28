@@ -11,7 +11,7 @@ public class Resistor : Wire {
 	}
 
 	public void setSprite (int resistance){
-		renderer.sprite = sprites[resistance+1];
+		renderer.sprite = sprites[resistance-1];
 	}
 
 
