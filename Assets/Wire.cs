@@ -11,9 +11,6 @@ public class Wire : MonoBehaviour {
 
 	public float tolerance = 0.2f;
 	bool triggered = false;
-	// Use this for initialization
-	void Start () {
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,6 +36,7 @@ public class Wire : MonoBehaviour {
 			}
 		}
 		if (checkEndpoints (agent)) {
+			agent.lastWire = this;
 			triggered = false;
 		}
 	}

@@ -7,11 +7,6 @@ public class PlayerController : MonoBehaviour {
 	public float inputThreshold;
 	public Agent avatar;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		float horiz = Input.GetAxisRaw ("Horizontal");

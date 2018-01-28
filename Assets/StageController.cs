@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour {
+	public SignScript sign;
 
 	public GameObject AgentPrefab;
 	public GameObject WirePrefab;
@@ -11,9 +13,11 @@ public class StageController : MonoBehaviour {
 	public GameObject CapacitorPrefab;
 	public GameObject JunctionPrefab;
 
-	public List<Agent> Agents = new List<Agent>();
-	public List<Junction> Junctions = new List<Junction>();
-	public List<Wire> Wires = new List<Wire>();
+	bool levelDone = false;
+	public int LEDtotal = 0;
+	public List<Agent> Agents;
+	public List<Junction> Junctions;
+	public List<Wire> Wires;
 
 	//returns the object on which the player starts
 	public GameObject Level1 () {
@@ -64,14 +68,21 @@ public class StageController : MonoBehaviour {
 		hookup (j16, j20, Direction.Up, WireType.Resistor);
 		hookup (j20, j21, Direction.Right, WireType.Capacitor);
 
-
 		return j20.gameObject;
 	}
 
-	void Start () {
+	void Start() {
+		LED.activeCount = 0;
+
+		Agents = new List<Agent>();
+		Junctions = new List<Junction>();
+		Wires = new List<Wire>();
+
 		Agent agent = Instantiate(AgentPrefab).GetComponent<Agent>();
 		Agents.Add (agent);
 
+		agent.energy = Agent.START_ENERGY;
+		sign.energy = agent.energy;
 
 		agent.container = Level1 ();
 		agent.containerType = ContainerType.Junction;
@@ -81,25 +92,48 @@ public class StageController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		foreach (Agent agent in Agents) {
-			if (agent.containerType == ContainerType.Wire) {
-				Wire wire = agent.container.GetComponent<Wire>();
-				wire.updateAgent (agent);
-			} else {
-				Junction junction = agent.container.GetComponent<Junction>();
-				agent.transform.position = junction.transform.position;
+		bool playerJustDied = false;
 
-				if (junction.hasWireOnDirection (agent.MovementIntent)) {
-					Wire wire = junction.getWire (agent.MovementIntent);
-					agent.containerType = ContainerType.Wire;
-					agent.container = wire.gameObject;
-					if (wire.endNode == junction) {
-						agent.bearing = -1;
-						agent.wirePosition = 1.0f;
-					} else { //hopefully it was at the other end
-						agent.bearing = 1;
-						agent.wirePosition = 0;
+		if (!levelDone) {
+			foreach (Agent agent in Agents) {
+				sign.energy = agent.energy;
+
+				if (agent.energy <= 0) {
+					playerJustDied = true;
+				} else {
+					if (agent.containerType == ContainerType.Wire) {
+						Wire wire = agent.container.GetComponent<Wire>();
+						wire.updateAgent (agent);
+					} else {
+						Junction junction = agent.container.GetComponent<Junction>();
+						agent.transform.position = junction.transform.position;
+
+						if (junction.hasWireOnDirection (agent.MovementIntent)) {
+							Wire wire = junction.getWire (agent.MovementIntent);
+							if (wire == agent.lastWire) {
+								agent.damage(1);
+							}
+							agent.containerType = ContainerType.Wire;
+							agent.container = wire.gameObject;
+							if (wire.endNode == junction) {
+								agent.bearing = -1;
+								agent.wirePosition = 1.0f;
+							} else { //hopefully it was at the other end
+								agent.bearing = 1;
+								agent.wirePosition = 0;
+							}
+						}
 					}
+				}
+			}
+
+			if (LED.activeCount == LEDtotal) {
+				levelDone = true;
+				sign.levelDone = true;
+			} else {
+				if (playerJustDied) {
+					string currentSceneName = SceneManager.GetActiveScene().name;
+					SceneManager.LoadScene(currentSceneName);
 				}
 			}
 		}
@@ -136,6 +170,7 @@ public class StageController : MonoBehaviour {
 		switch (wireType) {
 			case WireType.LED:
 				prefab = LEDPrefab;
+				LEDtotal += 1;
 				break;
 			case WireType.Resistor:
 				prefab = ResistorPrefab;
