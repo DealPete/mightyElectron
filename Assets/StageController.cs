@@ -163,8 +163,8 @@ public class StageController : MonoBehaviour {
 		return wire;
 	}
 
-	Wire hookupResistor(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget, int resistance) {
-		Wire wire = hookup(source, target, dirToTarget, dirFromTarget, WireType.Resistor);
+	Wire hookupResistor(Junction source, Junction target, Direction dirToTarget, int resistance) {
+		Wire wire = hookup(source, target, dirToTarget, WireType.Resistor);
 		wire.resistance = resistance;
 		return wire;
 	}
