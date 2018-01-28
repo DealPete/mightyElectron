@@ -11,9 +11,6 @@ public class Wire : MonoBehaviour {
 
 	public float tolerance = 0.2f;
 	bool triggered = false;
-	// Use this for initialization
-	void Start () {
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,6 +36,7 @@ public class Wire : MonoBehaviour {
 			}
 		}
 		if (checkEndpoints (agent)) {
+			agent.lastWire = this;
 			triggered = false;
 		}
 	}
@@ -50,7 +48,6 @@ public class Wire : MonoBehaviour {
 		//update the world position of agent
 		agent.transform.position = Vector3.Lerp (
 			startpoint, endpoint, agent.wirePosition);
-		checkEndpoints (agent);
 	}
 	public bool checkEndpoints (Agent agent) {
 		if (agent.wirePosition >= 1.0f) {

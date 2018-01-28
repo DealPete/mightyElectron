@@ -2,6 +2,8 @@
 using System;
 
 public class Agent : MonoBehaviour {
+	public static int START_ENERGY = 100;
+
 	public int bearing; //+1 or -1
 	public float speed;
 	public float wirePosition;
@@ -9,7 +11,9 @@ public class Agent : MonoBehaviour {
 	public GameObject container;
 	public Direction MovementIntent;
 
-	public int energy = 5;
+	public Wire lastWire;
+	public int energy;
+
 	public void damage(int d){
 		energy -= 1;
 	}
