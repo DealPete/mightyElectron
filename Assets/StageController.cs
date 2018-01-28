@@ -67,6 +67,7 @@ public class StageController : MonoBehaviour {
 
 		return j20.gameObject;
 	}
+
 	void Start () {
 		Agent agent = Instantiate(AgentPrefab).GetComponent<Agent>();
 		Agents.Add (agent);
@@ -159,6 +160,12 @@ public class StageController : MonoBehaviour {
 		wire.refreshPosition();
 		
 		Wires.Add(wire);
+		return wire;
+	}
+
+	Wire hookupResistor(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget, int resistance) {
+		Wire wire = hookup(source, target, dirToTarget, dirFromTarget, WireType.Resistor);
+		wire.resistance = resistance;
 		return wire;
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wire : MonoBehaviour {
+	public int resistance = 0;
 	public Junction startNode;
 	public Junction endNode;
 
@@ -16,7 +17,9 @@ public class Wire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		refreshPosition();
 	}
+
 	public void refreshPosition(){
 		lineRenderer.SetPositions(new Vector3[] {startNode.transform.position, endNode.transform.position});
 		this.transform.position = Vector3.Lerp (startNode.transform.position, endNode.transform.position, 0.5f);
