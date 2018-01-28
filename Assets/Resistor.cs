@@ -7,7 +7,7 @@ public class Resistor : Wire {
 	public List<Sprite> sprites;
 
 	public override void DoAction(Agent agent) {
-		agent.damage (1);
+		agent.damage (base.resistance);
 	}
 
 	public void setSprite (int resistance){

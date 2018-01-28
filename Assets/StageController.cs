@@ -169,64 +169,68 @@ public class StageController : MonoBehaviour {
 
 	//returns the object on which the player starts
 	public GameObject setupLevel(int level) {
-		switch (level) {
-		case 1:
-			Junction j1 = newJunction(new Vector3(25,0));
-			Junction j2 = newJunction(new Vector3(20,0));
-			hookup (j2, j1, Direction.Right, WireType.LED);
-			Junction j3 = newJunction(new Vector3(20, 5));
-			hookup (j2, j3, Direction.Up, WireType.Plain);
-			Junction j4 = newJunction(new Vector3( 25, 5));
-			hookup (j3, j4, Direction.Right, WireType.Resistor);
-			Junction j5 = newJunction(new Vector3 (30, 5));
-			hookup (j4, j5, Direction.Right,  WireType.Plain);
-			Junction j6 = newJunction(new Vector3 (25, 15));
-			hookup (j6, j5, Direction.Down, WireType.LED);
-			Junction j7 = newJunction(new Vector3 (20,15));
-			hookup (j6, j7, Direction.Left, WireType.Plain);
-			Junction j8 = newJunction(new Vector3 (20,10));
-			hookup (j7, j8, Direction.Down,WireType.Plain);
-			hookup (j8, j4, Direction.Down,  WireType.Resistor);
-			Junction j9 = newJunction(new Vector3(15, 10));
-			hookup(j8,j9,Direction.Left, WireType.Capacitor);
-			Junction j10 = newJunction(new Vector3(15, 15));
-			hookup(j9,j10,Direction.Up, WireType.Resistor);
-			hookup(j7,j10,Direction.Left, WireType.Plain);
-			Junction j11 = newJunction (new Vector3 (15, 5));
-			hookup (j9, j11, Direction.Down, WireType.Plain);
-			Junction j12 = newJunction (new Vector3 (15, 0));
-			hookup (j11, j12, Direction.Down, WireType.LED);
-			Junction j13 = newJunction (new Vector3 (10, 0));
-			hookup (j12, j13, Direction.Left, WireType.Plain);
-			Junction j14 = newJunction (new Vector3 (10, 5));
-			hookup (j13, j14, Direction.Up, WireType.Resistor);
-			Junction j15 = newJunction (new Vector3 (10, 10));
-			hookup (j14, j15, Direction.Up, WireType.LED);
-			hookup (j15, j9, Direction.Right, WireType.Resistor);
-			Junction j16 = newJunction (new Vector3 (5, 10));
-			hookup (j15, j16, Direction.Left, WireType.Plain);
-			Junction j17 = newJunction (new Vector3 (5, 5));
-			hookup (j16, j17, Direction.Down, WireType.Plain);
-			Junction j18 = newJunction (new Vector3 (0, 5));
-			hookup (j17, j18, Direction.Left, WireType.Resistor);
-			Junction j19 = newJunction (new Vector3 (0, 10));
-			hookup (j18, j19, Direction.Up, WireType.Capacitor);
-			hookup (j19, j16, Direction.Right, WireType.Speaker);
-			Junction j20 = newJunction (new Vector3 (5, 15));
-			Junction j21 = newJunction (new Vector3 (10, 15));
+		if (level == 1) {
+			Junction j1 = newJunction(new Vector3(0, 20));
+			Junction j2 = newJunction(new Vector3(0, 15));
+			Junction j3 = newJunction(new Vector3(0, 10));
+			Junction j4 = newJunction(new Vector3(0, 5));
+			Junction j5 = newJunction(new Vector3(0, 0));
+			Junction j6 = newJunction(new Vector3(5, 20));
+			Junction j7 = newJunction(new Vector3(5, 10));
+			Junction j8 = newJunction(new Vector3(5, 5));
+			Junction j10 = newJunction(new Vector3(10, 20));
+			Junction j11 = newJunction(new Vector3(10, 15));
+			Junction j12 = newJunction(new Vector3(10, 10));
+			Junction j13 = newJunction(new Vector3(10, 5));
+			Junction j14 = newJunction(new Vector3(10, 0));
+			Junction j15 = newJunction(new Vector3(15, 20));
+			Junction j16 = newJunction(new Vector3(15, 15));
+			Junction j17 = newJunction(new Vector3(15, 10));
+			Junction j18 = newJunction(new Vector3(15, 5));
+			Junction j19 = newJunction(new Vector3(15, 0));
+			Junction j20 = newJunction(new Vector3(20, 20));
+			Junction j21 = newJunction(new Vector3(20, 15));
+			Junction j22 = newJunction(new Vector3(20, 10));
+			Junction j23 = newJunction(new Vector3(20, 5));
+			Junction j24 = newJunction(new Vector3(20, 0));
 
-			hookup (j16, j20, Direction.Up, WireType.Resistor);
-			hookup (j20, j21, Direction.Right, WireType.Capacitor);
+			hookup(j1, j6, Direction.Right, WireType.LED);
+			hookup(j1, j2, Direction.Down, WireType.Plain);
+			hookupResistor(j2, j3, Direction.Down, 1);
+			hookup(j3, j7, Direction.Right, WireType.Plain);
+			hookupResistor(j3, j4, Direction.Down, 2);
+			hookup(j4, j5, Direction.Down, WireType.Plain);
+			hookup(j5, j14, Direction.Right, WireType.Plain);
+			hookup(j6, j10, Direction.Right, WireType.Plain);
+			hookup(j7, j12, Direction.Right, WireType.Speaker);
+			hookupResistor(j7, j8, Direction.Down, 2);
+			hookup(j8, j13, Direction.Right, WireType.Plain);
+			hookupResistor(j10, j15, Direction.Right, 1);
+			hookup(j10, j11, Direction.Down, WireType.Plain);
+			hookupResistor(j11, j16, Direction.Right, 2);
+			hookup(j11, j12, Direction.Down, WireType.Speaker);
+			hookup(j12, j17, Direction.Right, WireType.Speaker);
+			hookupResistor(j12, j13, Direction.Down, 3);
+			hookupResistor(j13, j18, Direction.Right, 1);
+			hookupResistor(j14, j19, Direction.Right, 3);
+			hookupResistor(j15, j20, Direction.Right, 1);
+			hookup(j16, j21, Direction.Right, WireType.Plain);
+			hookup(j17, j22, Direction.Right, WireType.Plain);
+			hookup(j18, j23, Direction.Right, WireType.Plain);
+			hookup(j19, j24, Direction.Right, WireType.Speaker);
+			hookupResistor(j20, j21, Direction.Down, 1);
+			hookupResistor(j21, j22, Direction.Down, 2);
+			hookup(j22, j23, Direction.Down, WireType.Capacitor);
+			hookup(j23, j24, Direction.Down, WireType.Plain);
 
-			return j20.gameObject;
-			break;
-
-		default:
-		case 2:
+			return j12.gameObject;
+		} else if (level == 2) {
 			Junction j22 = newJunction (new Vector3 (10, 15));
 			return j22.gameObject;
-			break;
-		}
+		} else {
+			Junction j22 = newJunction (new Vector3 (10, 15));
+			return j22.gameObject;
+		}	
 	}
 }
 
