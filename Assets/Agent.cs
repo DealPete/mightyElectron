@@ -11,7 +11,6 @@ public class Agent : MonoBehaviour {
 	public GameObject container;
 	public Direction MovementIntent;
 
-	public Wire lastWire;
 	public int energy;
 
 	public void damage(int d){

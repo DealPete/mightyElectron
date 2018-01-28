@@ -36,7 +36,6 @@ public class Wire : MonoBehaviour {
 			}
 		}
 		if (checkEndpoints (agent)) {
-			agent.lastWire = this;
 			triggered = false;
 		}
 	}

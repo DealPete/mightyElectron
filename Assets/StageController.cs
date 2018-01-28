@@ -63,9 +63,6 @@ public class StageController : MonoBehaviour {
 
 						if (junction.hasWireOnDirection (agent.MovementIntent)) {
 							Wire wire = junction.getWire (agent.MovementIntent);
-							if (wire == agent.lastWire) {
-								agent.damage(1);
-							}
 							agent.containerType = ContainerType.Wire;
 							agent.container = wire.gameObject;
 							if (wire.endNode == junction) {
