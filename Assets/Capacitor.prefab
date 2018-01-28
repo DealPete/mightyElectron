@@ -53,7 +53,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4134676726534946}
-  - component: {fileID: 81074987327967840}
   m_Layer: 0
   m_Name: Agent2
   m_TagString: Untagged
@@ -86,7 +85,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4514201613263824}
-  - component: {fileID: 81438415380590500}
   m_Layer: 0
   m_Name: Agent2 (4)
   m_TagString: Untagged
@@ -186,7 +184,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4857628466047938}
-  - component: {fileID: 81062214034865600}
   m_Layer: 0
   m_Name: Agent2 (1)
   m_TagString: Untagged
@@ -270,7 +267,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4011583778804118}
-  - component: {fileID: 81699373891931832}
   m_Layer: 0
   m_Name: Agent2 (2)
   m_TagString: Untagged
@@ -337,7 +333,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4841120644005764}
-  - component: {fileID: 81369049141655978}
   m_Layer: 0
   m_Name: Agent2 (3)
   m_TagString: Untagged
@@ -717,41 +712,6 @@ Transform:
   m_Father: {fileID: 4440386190573804}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &81062214034865600
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1472988525489528}
-  m_Enabled: 1
---- !u!81 &81074987327967840
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1214467979247398}
-  m_Enabled: 1
---- !u!81 &81369049141655978
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1749891942842066}
-  m_Enabled: 1
---- !u!81 &81438415380590500
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1226501804722924}
-  m_Enabled: 1
---- !u!81 &81699373891931832
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608599140099374}
-  m_Enabled: 1
 --- !u!82 &82384750514117808
 AudioSource:
   m_ObjectHideFlags: 1
@@ -946,6 +906,7 @@ MonoBehaviour:
   - {fileID: 1608599140099374}
   - {fileID: 1749891942842066}
   - {fileID: 1226501804722924}
+  animationtime: 0
 --- !u!114 &114914428184899154
 MonoBehaviour:
   m_ObjectHideFlags: 1
