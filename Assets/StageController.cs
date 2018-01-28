@@ -213,7 +213,7 @@ public class StageController : MonoBehaviour {
 			hookup (j17, j18, Direction.Left, WireType.Resistor);
 			Junction j19 = newJunction (new Vector3 (0, 10));
 			hookup (j18, j19, Direction.Up, WireType.Capacitor);
-			hookup (j19, j16, Direction.Right, WireType.LED);
+			hookup (j19, j16, Direction.Right, WireType.Speaker);
 			Junction j20 = newJunction (new Vector3 (5, 15));
 			Junction j21 = newJunction (new Vector3 (10, 15));
 
