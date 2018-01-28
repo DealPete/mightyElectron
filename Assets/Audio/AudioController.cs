@@ -13,6 +13,10 @@ public class AudioController : MonoBehaviour {
 	//Stings
 	public AudioSource stingPlayer;
 	public AudioClip[] stings;
+	//specific sounds
+	public AudioClip ledSting;
+	public AudioClip damageSting;
+	public AudioClip backSting;
 	public float stingVolume;
 
 	void Start () {
@@ -27,7 +31,7 @@ public class AudioController : MonoBehaviour {
 	public void Update(){
 
 		if (Input.GetKeyDown(KeyCode.U)){
-			PlaySting();
+			playSting();
 		}
 
 		if (Input.GetKeyDown(KeyCode.I)){
@@ -47,10 +51,22 @@ public class AudioController : MonoBehaviour {
 	/// <summary>
 	/// Plays a random audio sting
 	/// </summary>
-	public void PlaySting(){
+	public void playSting(){
 		int sel = Random.Range(0,stings.Length);
 		// stingPlayer.clip = stings[sel];
 		stingPlayer.PlayOneShot(stings[sel]);
+	}
+
+	public void ledOn(){
+		stingPlayer.PlayOneShot(ledSting);
+	}
+
+	public void takeDamage(){
+		stingPlayer.PlayOneShot(damageSting);
+	}
+
+	public void goBack(){
+		stingPlayer.PlayOneShot(backSting);
 	}
 
 }
