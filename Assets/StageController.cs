@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour {
+	static int LAST_LEVEL = 1;
 	public AudioController ac;
-	public static int level = 1;
+	static int level = 1;
 
 	public SignScript sign;
 
@@ -44,7 +45,6 @@ public class StageController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (!levelDone) {
 			foreach (Agent agent in Agents) {
 				if (agent.energy <= 0) {
@@ -81,6 +81,9 @@ public class StageController : MonoBehaviour {
 				sign.text = "LEVEL COMPLETE! Press Fire to continue";
 				levelDone = true;
 				playerJustDied = false;
+			}
+			if (LAST_LEVEL < level) {
+				sign.text = "You've won! CONGRATULATIONS";
 			}
 		} else {
 			if (Input.GetButton("Fire1")) {
@@ -228,8 +231,8 @@ public class StageController : MonoBehaviour {
 			Junction j22 = newJunction (new Vector3 (10, 15));
 			return j22.gameObject;
 		} else {
-			Junction j22 = newJunction (new Vector3 (10, 15));
-			return j22.gameObject;
+			Junction junc = newJunction (new Vector3 (10, 15));
+			return junc.gameObject;
 		}	
 	}
 }
