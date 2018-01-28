@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Causes a gameobject's scale to expand and contract
+/// </summary>
 public class Oscillate : MonoBehaviour {
 	public float freq=1f;
 	public float amp=0.1f;
