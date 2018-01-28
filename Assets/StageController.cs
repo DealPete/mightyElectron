@@ -24,12 +24,13 @@ public class StageController : MonoBehaviour {
 		Junction j5 = newJunction(new Vector3 (0, 5));
 
 		Wire w1 = hookup(j1, j2, Direction.Left, Direction.Right, WireType.Plain);
-		hookup(j2, j3, Direction.Up, Direction.Down, WireType.Resistor);
+		hookupResistor(j2, j3, Direction.Up, Direction.Down, 3);
 		hookup (j3, j4, Direction.Right, Direction.Left, WireType.LED);
 		hookup (j4, j5, Direction.Right, Direction.Left, WireType.Plain);
 		hookup (j5, j1, Direction.Down, Direction.Up, WireType.Capacitor);
 		return w1.gameObject;
 	}
+
 	void Start () {
 		Agent agent = Instantiate(AgentPrefab).GetComponent<Agent>();
 		Agents.Add (agent);
@@ -103,6 +104,12 @@ public class StageController : MonoBehaviour {
 		wire.refreshPosition();
 		
 		Wires.Add(wire);
+		return wire;
+	}
+
+	Wire hookupResistor(Junction source, Junction target, Direction dirToTarget, Direction dirFromTarget, int resistance) {
+		Wire wire = hookup(source, target, dirToTarget, dirFromTarget, WireType.Resistor);
+		wire.resistance = resistance;
 		return wire;
 	}
 }
