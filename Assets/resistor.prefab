@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4722918436486640}
   - component: {fileID: 114083324391163412}
+  - component: {fileID: 82797534033145584}
   m_Layer: 0
   m_Name: resistor
   m_TagString: Untagged
@@ -100,6 +101,98 @@ Transform:
   m_Father: {fileID: 4722918436486640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82797534033145584
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714357849886122}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8cc48cb0d22784be08b6114c08cc2b5a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.01
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0.2
+  MinDistance: 0.5
+  MaxDistance: 2.5
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.25
+      value: 1
+      inSlope: -4.0016
+      outSlope: -4.0016
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5
+      value: 0.5
+      inSlope: -1.0004
+      outSlope: -1.0004
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: -0.2501
+      outSlope: -0.2501
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.24719048
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114083324391163412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,6 +209,14 @@ MonoBehaviour:
   endNode: {fileID: 0}
   lineRenderer: {fileID: 120302905646833064}
   tolerance: 0.2
+  renderer: {fileID: 212438578575799408}
+  sprites:
+  - {fileID: 21300000, guid: 1499efd6ca4f949379fde50648c49ca7, type: 3}
+  - {fileID: 21300000, guid: 07d3f849d79354e98b50379223bee1c0, type: 3}
+  - {fileID: 21300000, guid: ffd56bfe18e2543b9b9a699b80a1ffcc, type: 3}
+  - {fileID: 21300000, guid: d46a3d771e8f94b8597fc8c0aa3f5696, type: 3}
+  - {fileID: 21300000, guid: 5f56fb2007bb94d82a55da706ef1228f, type: 3}
+  audio: {fileID: 0}
 --- !u!120 &120302905646833064
 LineRenderer:
   m_ObjectHideFlags: 1
