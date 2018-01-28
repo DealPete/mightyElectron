@@ -50,7 +50,6 @@ public class Wire : MonoBehaviour {
 		//update the world position of agent
 		agent.transform.position = Vector3.Lerp (
 			startpoint, endpoint, agent.wirePosition);
-		checkEndpoints (agent);
 	}
 	public bool checkEndpoints (Agent agent) {
 		if (agent.wirePosition >= 1.0f) {
