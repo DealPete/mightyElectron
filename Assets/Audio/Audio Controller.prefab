@@ -142,7 +142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374847992579412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5717452, y: -0.33792073, z: -0.10891511}
+  m_LocalPosition: {x: 10.621098, y: 7.2948174, z: -0.10891511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4705133445872112}
@@ -638,7 +638,7 @@ MonoBehaviour:
   - {fileID: 82765397802267704}
   - {fileID: 82584167295100280}
   - {fileID: 82432411969529082}
-  musicVolume: 0.3
+  musicVolume: 0.6
   stingPlayer: {fileID: 82765749254581112}
   stings:
   - {fileID: 8300000, guid: 2fb7ccc81a8064787a4ec0f36c29dfe3, type: 3}
@@ -648,4 +648,4 @@ MonoBehaviour:
   damageSting: {fileID: 8300000, guid: 9526607e8d4eb44eb8491d3b53b6c0cc, type: 3}
   backSting: {fileID: 8300000, guid: a1fd478b52bcf4f2ca837201c65bc060, type: 3}
   deathSting: {fileID: 8300000, guid: efecbf8f0cbb4446d90c6aa89578bf14, type: 3}
-  stingVolume: 0.05
+  stingVolume: 0.02

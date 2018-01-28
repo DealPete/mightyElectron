@@ -25,6 +25,7 @@ public class LED : Wire {
 
 			offGraphic.SetActive(false);
 			onGraphic.SetActive(true);
+			ac.ledOn ();
 		}
 	}
 

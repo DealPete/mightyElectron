@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wire : MonoBehaviour {
+	public AudioController ac;
 	public int resistance = 0;
 	public Junction startNode;
 	public Junction endNode;
@@ -13,6 +14,9 @@ public class Wire : MonoBehaviour {
 	bool triggered = false;
 	
 	// Update is called once per frame
+	public void Start(){
+		this.ac = AudioController.instance;
+	}
 	void Update () {
 		refreshPosition();
 	}

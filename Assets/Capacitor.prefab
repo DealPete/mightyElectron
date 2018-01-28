@@ -723,7 +723,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6caa33146735f448992b33598767b6f5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.005
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -732,7 +732,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0.2
   MinDistance: 0.5
-  MaxDistance: 1.5
+  MaxDistance: 2.5
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -918,6 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9f08c118f8cdb49bd1c7e36df8dbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
   resistance: 0
   startNode: {fileID: 0}
   endNode: {fileID: 0}
