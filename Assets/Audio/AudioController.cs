@@ -6,6 +6,7 @@ using UnityEngine;
 Each musical file consists of 4 stems, each of which can be triggered with NextStem
  */
 public class AudioController : MonoBehaviour {
+	public static AudioController instance;
 	//BGM 
 	public AudioSource[] stems;
 	public float musicVolume;
@@ -16,6 +17,7 @@ public class AudioController : MonoBehaviour {
 	public float stingVolume;
 
 	void Start () {
+		instance = this;
 		foreach (var stem in stems)
 		{
 			stem.volume = 0;

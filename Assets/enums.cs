@@ -15,5 +15,6 @@ public enum WireType {
 	Plain,
 	LED,
 	Resistor,
-	Capacitor
+	Capacitor,
+	Speaker
 }

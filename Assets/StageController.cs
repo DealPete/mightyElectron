@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour {
+
+	public AudioController ac;
+
 	public SignScript sign;
 
 	public GameObject AgentPrefab;
@@ -12,6 +15,7 @@ public class StageController : MonoBehaviour {
 	public GameObject ResistorPrefab;
 	public GameObject CapacitorPrefab;
 	public GameObject JunctionPrefab;
+	public GameObject SpeakerPrefab;
 
 	bool levelDone = false;
 	public int LEDtotal = 0;
@@ -23,7 +27,7 @@ public class StageController : MonoBehaviour {
 	public GameObject Level1 () {
 		Junction j1 = newJunction(new Vector3(25,0));
 		Junction j2 = newJunction(new Vector3(20,0));
-		hookup (j1, j2, Direction.Left, WireType.LED);
+		hookup (j1, j2, Direction.Left, WireType.Speaker);
 		Junction j3 = newJunction(new Vector3(20, 5));
 		hookup (j2, j3, Direction.Up, WireType.Plain);
 		Junction j4 = newJunction(new Vector3( 25, 5));
@@ -177,7 +181,11 @@ public class StageController : MonoBehaviour {
 				break;
 			case WireType.Capacitor:
 				prefab = CapacitorPrefab;
-				break;
+			break;
+			case WireType.Speaker:
+				prefab = SpeakerPrefab;
+				LEDtotal += 1;
+			break;
 			default:
 			case WireType.Plain:
 				prefab = WirePrefab;

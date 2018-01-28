@@ -200,7 +200,7 @@ RectTransform:
   m_Children:
   - {fileID: 1193996604}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -375,7 +375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1193996603
 GameObject:
@@ -408,11 +408,11 @@ RectTransform:
   m_Father: {fileID: 257108000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -243, y: 125.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -139}
   m_SizeDelta: {x: 264.9, y: 138.5}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1193996605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +465,68 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1193996603}
+--- !u!1001 &1271166926
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10.621098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.2948174
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.10891511
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141262095314678, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114442075088993600, guid: a8cdc02cc231b427993aaa606f3775e4,
+        type: 2}
+      propertyPath: stingPlayer
+      value: 
+      objectReference: {fileID: 1271166927}
+    - target: {fileID: 114442075088993600, guid: a8cdc02cc231b427993aaa606f3775e4,
+        type: 2}
+      propertyPath: musicVolume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114442075088993600, guid: a8cdc02cc231b427993aaa606f3775e4,
+        type: 2}
+      propertyPath: stingVolume
+      value: 0.15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a8cdc02cc231b427993aaa606f3775e4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!82 &1271166927 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82765749254581112, guid: a8cdc02cc231b427993aaa606f3775e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1271166926}
 --- !u!1 &1692044459
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfc3c8547b0c00469155318711b2068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
   sign: {fileID: 1193996606}
   AgentPrefab: {fileID: 1091636258866834, guid: fee806b1ae42c4a34992520c52bce6ba,
     type: 2}
@@ -503,6 +566,8 @@ MonoBehaviour:
   CapacitorPrefab: {fileID: 1220066867002470, guid: 8392933d0a21299469cfdd6ad66b4833,
     type: 2}
   JunctionPrefab: {fileID: 1364530030426724, guid: 4fbdf22fbb40ad743bd9edefecd91e80,
+    type: 2}
+  SpeakerPrefab: {fileID: 1203174649240988, guid: 1cd4832cb105c104aba931dab0df708d,
     type: 2}
   LEDtotal: 0
   Agents: []
@@ -519,7 +584,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1692044462
 MonoBehaviour:
