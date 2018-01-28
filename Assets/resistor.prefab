@@ -216,7 +216,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffd56bfe18e2543b9b9a699b80a1ffcc, type: 3}
   - {fileID: 21300000, guid: d46a3d771e8f94b8597fc8c0aa3f5696, type: 3}
   - {fileID: 21300000, guid: 5f56fb2007bb94d82a55da706ef1228f, type: 3}
-  audio: {fileID: 0}
 --- !u!120 &120302905646833064
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -231,7 +230,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1f609cfbab4d6c4f958effcdc1d24a7, type: 2}
+  - {fileID: 2100000, guid: 0272cdcc0e4c94302a0b4c28f758b2bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
