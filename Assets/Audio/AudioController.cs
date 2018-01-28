@@ -51,7 +51,12 @@ public class AudioController : MonoBehaviour {
 		stems[currentStem].volume=musicVolume;
 		currentStem++;
 	}
-
+	public void StopMusic(){
+	
+		foreach (var stem in stems) {
+			stem.volume = 0;
+		}
+	}
 	public void playSting(){
 		int sel = Random.Range(0,stings.Length);
 		// stingPlayer.clip = stings[sel];
@@ -63,7 +68,7 @@ public class AudioController : MonoBehaviour {
 	}
 
 	public void takeDamage(){
-		stingPlayer.PlayOneShot(damageSting);
+		stingPlayer.PlayOneShot(damageSting, 0.1f);
 	}
 
 	public void goBack(){

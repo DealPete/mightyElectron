@@ -51,6 +51,7 @@ public class StageController : MonoBehaviour {
 					sign.text = "You are out of energy. Press FIRE to restart level.";
 					levelDone = true;
 					playerJustDied = true;
+					agent.kill ();
 				} else {
 					sign.text = "Energy: " + agent.energy;
 
