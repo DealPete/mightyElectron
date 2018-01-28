@@ -18,6 +18,7 @@ public class AudioController : MonoBehaviour {
 	public AudioClip ledSting;
 	public AudioClip damageSting;
 	public AudioClip backSting;
+	public AudioClip deathSting;
 	public float stingVolume;
 
 	void Start () {
@@ -30,15 +31,6 @@ public class AudioController : MonoBehaviour {
 	}
 
 	public void Update(){
-
-		if (Input.GetKeyDown(KeyCode.U)){
-			playSting();
-		}
-
-		if (Input.GetKeyDown(KeyCode.I)){
-			NextStem();
-		}
-
 		if (Input.GetKeyDown(KeyCode.Alpha1)){
 			ChangeSong(0);
 		}
@@ -58,9 +50,6 @@ public class AudioController : MonoBehaviour {
 		currentStem++;
 	}
 
-	/// <summary>
-	/// Plays a random audio sting
-	/// </summary>
 	public void playSting(){
 		int sel = Random.Range(0,stings.Length);
 		// stingPlayer.clip = stings[sel];
@@ -85,6 +74,10 @@ public class AudioController : MonoBehaviour {
 			stems[i].clip = songs[songNum].stems[i];
 			stems[i].Play();
 		}
+	}
+
+	public void onDeath(){
+		stingPlayer.PlayOneShot(deathSting);
 	}
 
 }
