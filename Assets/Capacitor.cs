@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Capacitor : Wire {
+	public CapacitorAnimator capacitoranimator;
 	public bool charged = true;
 
 	public override void DoAction(Agent agent) {
 		if (charged) {
 			agent.setEnergy (Agent.START_ENERGY);
 			charged = false;
+			capacitoranimator.animate ();
 		}
 	}
 }

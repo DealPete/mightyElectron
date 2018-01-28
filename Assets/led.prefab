@@ -243,12 +243,15 @@ MonoBehaviour:
   isOn: 0
   onGraphic: {fileID: 1925217073658880}
   offGraphic: {fileID: 1444350715065220}
-  RedOff: {fileID: 0}
-  RedON: {fileID: 0}
-  GreenOff: {fileID: 0}
-  GreenOn: {fileID: 0}
-  BlueOff: {fileID: 0}
-  BlueOn: {fileID: 0}
+  RedOff: {fileID: 21300000, guid: 8ea707c25e77b4bd78ae9dd3a698da8c, type: 3}
+  RedON: {fileID: 21300000, guid: 35b3bb717539c48dc86d3a4ce2174d61, type: 3}
+  redglow: {fileID: 2100000, guid: 9849e978f048142719d56bda6faa3747, type: 2}
+  GreenOff: {fileID: 21300000, guid: 5230dc6c9e97948b59ce148ac38682e2, type: 3}
+  GreenOn: {fileID: 21300000, guid: 7a13c829e2c3c4f0597f9bdad7bbd2ed, type: 3}
+  greenglow: {fileID: 2100000, guid: 5d79cb0a38e11443b800292d5c38d7c2, type: 2}
+  BlueOff: {fileID: 21300000, guid: 3818a23d83fd3493f8c8c32061cd6e17, type: 3}
+  BlueOn: {fileID: 21300000, guid: 57874848fca2c4768abb4c84615baee5, type: 3}
+  blueglow: {fileID: 2100000, guid: 317bd8a8ea188480a9833bdaf7410ece, type: 2}
 --- !u!120 &120743340498978910
 LineRenderer:
   m_ObjectHideFlags: 1

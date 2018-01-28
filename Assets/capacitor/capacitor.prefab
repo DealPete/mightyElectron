@@ -53,7 +53,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4971745233403348}
-  - component: {fileID: 114465649917037780}
   - component: {fileID: 81989098315462808}
   m_Layer: 0
   m_Name: Agent2 (3)
@@ -87,7 +86,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4198787177756356}
-  - component: {fileID: 114214069291990010}
   - component: {fileID: 81597203670253898}
   m_Layer: 0
   m_Name: Agent2
@@ -188,7 +186,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4876638003777678}
-  - component: {fileID: 114967146412399020}
   - component: {fileID: 81258122894905846}
   m_Layer: 0
   m_Name: Agent2 (4)
@@ -239,7 +236,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4786506002258268}
-  - component: {fileID: 114175222534237154}
   - component: {fileID: 81261261542854896}
   m_Layer: 0
   m_Name: Agent2 (2)
@@ -324,7 +320,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4216325336671584}
-  - component: {fileID: 114893570165226908}
   - component: {fileID: 81426962440582028}
   m_Layer: 0
   m_Name: Agent2 (1)
@@ -780,96 +775,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114175222534237154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1726930608217742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d1097a4bb9cff4ba2e911e0f7fa76f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bearing: 1
-  speed: 5
-  wirePosition: 0.5
-  containerType: 0
-  container: {fileID: 0}
-  MovementIntent: 0
-  energy: 5
---- !u!114 &114214069291990010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273190884049570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d1097a4bb9cff4ba2e911e0f7fa76f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bearing: 1
-  speed: 5
-  wirePosition: 0.5
-  containerType: 0
-  container: {fileID: 0}
-  MovementIntent: 0
-  energy: 5
---- !u!114 &114465649917037780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1151587508962764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d1097a4bb9cff4ba2e911e0f7fa76f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bearing: 1
-  speed: 5
-  wirePosition: 0.5
-  containerType: 0
-  container: {fileID: 0}
-  MovementIntent: 0
-  energy: 5
---- !u!114 &114893570165226908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1879809056427230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d1097a4bb9cff4ba2e911e0f7fa76f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bearing: 1
-  speed: 5
-  wirePosition: 0.5
-  containerType: 0
-  container: {fileID: 0}
-  MovementIntent: 0
-  energy: 5
---- !u!114 &114967146412399020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1679673589750842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d1097a4bb9cff4ba2e911e0f7fa76f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bearing: 1
-  speed: 5
-  wirePosition: 0.5
-  containerType: 0
-  container: {fileID: 0}
-  MovementIntent: 0
-  energy: 5
 --- !u!198 &198166949943708884
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -160,6 +160,12 @@ public class StageController : MonoBehaviour {
 		return wire;
 	}
 
+	Wire hookup(Junction source, Junction target, Direction dirToTarget, WireType wireType, LED.clr color) {
+		LED led = (LED)hookup (source, target, dirToTarget, wireType);
+		led.SetColor (color);
+		return led;
+	}
+
 	Wire hookupResistor(Junction source, Junction target, Direction dirToTarget, int resistance) {
 		Resistor wire = (Resistor)hookup(source, target, dirToTarget, WireType.Resistor);
 		wire.resistance = resistance;
@@ -181,7 +187,7 @@ public class StageController : MonoBehaviour {
 			Junction j5 = newJunction(new Vector3 (30, 5));
 			hookup (j4, j5, Direction.Right,  WireType.Plain);
 			Junction j6 = newJunction(new Vector3 (25, 15));
-			hookup (j6, j5, Direction.Down, WireType.LED);
+			hookup (j6, j5, Direction.Down, WireType.LED, LED.clr.blue);
 			Junction j7 = newJunction(new Vector3 (20,15));
 			hookup (j6, j7, Direction.Left, WireType.Plain);
 			Junction j8 = newJunction(new Vector3 (20,10));
