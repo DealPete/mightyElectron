@@ -7,6 +7,7 @@ Each musical file consists of 4 stems, each of which can be triggered with NextS
  */
 public class AudioController : MonoBehaviour {
 	//BGM 
+	public List<SongStems> songs;
 	public AudioSource[] stems;
 	public float musicVolume;
 	private int currentStem=0;
@@ -37,6 +38,15 @@ public class AudioController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.I)){
 			NextStem();
 		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha1)){
+			ChangeSong(0);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha2)){
+			ChangeSong(1);
+		}
+
 	}
 
 	/// <summary>
@@ -67,6 +77,14 @@ public class AudioController : MonoBehaviour {
 
 	public void goBack(){
 		stingPlayer.PlayOneShot(backSting);
+	}
+
+	public void ChangeSong(int songNum){
+		for (int i = 0; i < 4; i++)
+		{
+			stems[i].clip = songs[songNum].stems[i];
+			stems[i].Play();
+		}
 	}
 
 }
