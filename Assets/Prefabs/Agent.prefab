@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d1097a4bb9cff4ba2e911e0f7fa76f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
   explosion: {fileID: 1377514322809782, guid: ec189ee0125ff41d5806ce1b4c4073f1, type: 2}
   sprite: {fileID: 1542210894772650}
   bearing: 1

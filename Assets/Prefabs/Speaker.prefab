@@ -112,12 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd39142e2316ae4fb6c2c01478878f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
   resistance: 0
   startNode: {fileID: 0}
   endNode: {fileID: 0}
   lineRenderer: {fileID: 120332371760572330}
   tolerance: 0.2
-  ac: {fileID: 0}
   animator: {fileID: 114898638880904862}
   isOn: 0
 --- !u!114 &114898638880904862
