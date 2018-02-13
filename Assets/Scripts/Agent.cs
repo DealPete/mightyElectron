@@ -15,23 +15,24 @@ public class Agent : MonoBehaviour {
 
 	public int energy;
 
-	void Start(){
+	void Start() {
 		ac = AudioController.instance;
 	}
 
-	public void damage(int d){
+	public void damage(int d) {
 		energy -= d;
 	}
-	public void setEnergy(int e){
+
+	public void setEnergy(int e) {
 		energy = e;
 	}
-	public void kill(){
+
+	public void kill() {
 		GameObject exp = Instantiate (explosion);
 		exp.transform.position = this.transform.position;
 		this.transform.position = new Vector3 (100, 100, 0);
 		Destroy(sprite);
 		ac.onDeath ();
 		ac.StopMusic ();
-
 	}
 }

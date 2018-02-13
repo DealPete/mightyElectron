@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wire : MonoBehaviour {
+	public int id;
 	public AudioController ac;
 	public int resistance = 0;
 	public Junction startNode;

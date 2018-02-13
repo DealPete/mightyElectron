@@ -9,6 +9,7 @@ public class UIScript : MonoBehaviour {
 	}
 
 	public void LoadByIndex(int sceneIndex) {
+		StageController.playingEditorLevel = false;
 		SceneManager.LoadScene(sceneIndex);
 	}
 }

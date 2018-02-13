@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+enum GameState {
+	PlayingLevel,
+	PlayerDead,
+	LevelComplete,
+	GameComplete
+}
+
 public class StageController : MonoBehaviour {
-	static int LAST_LEVEL = 3;
-	public AudioController ac;
-	static int level = 1;
+	public static bool playingEditorLevel = false;
+	private static int LAST_LEVEL = 3;
+	private static int level = 1;
 
 	public SignScript sign;
+	public AudioController ac;
 
 	public GameObject AgentPrefab;
 	public GameObject WirePrefab;
@@ -18,14 +26,15 @@ public class StageController : MonoBehaviour {
 	public GameObject JunctionPrefab;
 	public GameObject SpeakerPrefab;
 
-	bool playerJustDied = false;
-	bool levelDone = false;
 	public int LEDtotal = 0;
 	public List<Agent> Agents;
 	public List<Junction> Junctions;
 	public List<Wire> Wires;
 
+	private GameState gameState;
+
 	void Start() {
+		gameState = GameState.PlayingLevel;
 		LED.activeCount = 0;
 
 		Agents = new List<Agent>();
@@ -37,7 +46,11 @@ public class StageController : MonoBehaviour {
 
 		agent.energy = Agent.START_ENERGY;
 
-		agent.container = setupLevel(level);
+		if (playingEditorLevel)
+			agent.container = setupEditorLevel();
+		else
+			agent.container = setupLevel(level);
+
 		agent.containerType = ContainerType.Junction;
 
 		this.gameObject.GetComponent<PlayerController> ().avatar = agent;
@@ -45,54 +58,69 @@ public class StageController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!levelDone) {
-			foreach (Agent agent in Agents) {
-				if (agent.energy <= 0) {
-					sign.text = "You are out of energy. Press FIRE to restart level.";
-					levelDone = true;
-					playerJustDied = true;
-					agent.kill ();
-				} else {
-					sign.text = "Energy: " + agent.energy;
+		switch (gameState) {
+			case GameState.GameComplete:
+				break;
 
-					if (agent.containerType == ContainerType.Wire) {
-						Wire wire = agent.container.GetComponent<Wire>();
-						wire.updateAgent (agent);
+			case GameState.PlayingLevel:
+				foreach (Agent agent in Agents) {
+					if (agent.energy <= 0) {
+						sign.text = "You are out of energy. Press FIRE to restart level.";
+						gameState = GameState.PlayerDead;
+						agent.kill ();
 					} else {
-						Junction junction = agent.container.GetComponent<Junction>();
-						agent.transform.position = junction.transform.position;
+						sign.text = "Energy: " + agent.energy;
 
-						if (junction.hasWireOnDirection (agent.MovementIntent)) {
-							Wire wire = junction.getWire (agent.MovementIntent);
-							agent.containerType = ContainerType.Wire;
-							agent.container = wire.gameObject;
-							if (wire.endNode == junction) {
-								agent.bearing = -1;
-								agent.wirePosition = 1.0f;
-							} else { //hopefully it was at the other end
-								agent.bearing = 1;
-								agent.wirePosition = 0;
+						if (agent.containerType == ContainerType.Wire) {
+							Wire wire = agent.container.GetComponent<Wire>();
+							wire.updateAgent (agent);
+						} else {
+							Junction junction = agent.container.GetComponent<Junction>();
+							agent.transform.position = junction.transform.position;
+
+							Wire wire = junction.getWireOnDirection (agent.MovementIntent);
+							if (wire != null) {
+								agent.containerType = ContainerType.Wire;
+								agent.container = wire.gameObject;
+								if (wire.endNode == junction) {
+									agent.bearing = -1;
+									agent.wirePosition = 1.0f;
+								} else { //hopefully it was at the other end
+									agent.bearing = 1;
+									agent.wirePosition = 0;
+								}
 							}
 						}
 					}
 				}
-			}
 
-			if (LED.activeCount == LEDtotal) {
-				sign.text = "LEVEL COMPLETE! Press Fire to continue";
-				levelDone = true;
-				playerJustDied = false;
-			}
-			if (LAST_LEVEL < level) {
-				sign.text = "You've won! CONGRATULATIONS";
-			}
-		} else {
-			if (Input.GetButton("Fire1")) {
-				if (!playerJustDied) {
+				if (LED.activeCount == LEDtotal) {
+					if (LAST_LEVEL < level) {
+						gameState = GameState.GameComplete;
+						sign.text = "LEVEL COMPLETE! Press Fire to continue";
+					} else {
+						gameState = GameState.LevelComplete;
+						sign.text = "You've won! CONGRATULATIONS";
+					}
+				}
+				break;
+
+			case GameState.PlayerDead:
+				if (Input.GetButton("Fire1")) {
+					restartScene();
+				}
+				break;
+
+			case GameState.LevelComplete:
+				if (Input.GetButton("Fire1")) {
 					StageController.level += 1;
-				} 
-				restartScene();
-			}
+					restartScene();
+				}
+				break;
+
+			default:
+				sign.text = "You're in the level editor.";
+				break;
 		}
 	}
 
@@ -155,8 +183,8 @@ public class StageController : MonoBehaviour {
 		wire.startNode = source;
 		wire.endNode = target;
 
-		source.addWire(dirToTarget, wire);
-		target.addWire(dirFromTarget, wire);
+		source.addWire(wire);
+		target.addWire(wire);
 		
 		wire.refreshPosition();
 		
@@ -175,6 +203,10 @@ public class StageController : MonoBehaviour {
 		wire.resistance = resistance;
 		wire.setSprite(resistance);
 		return wire;
+	}
+
+	public GameObject setupEditorLevel() {
+		return null;
 	}
 
 	//returns the object on which the player starts
