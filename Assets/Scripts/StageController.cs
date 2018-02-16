@@ -154,7 +154,6 @@ public class StageController : MonoBehaviour {
 	}
 
 	Wire hookup(Junction source, Junction target, Direction dirToTarget, WireType wireType) {
-		Direction dirFromTarget = opposite(dirToTarget);
 		GameObject prefab;
 
 		switch (wireType) {

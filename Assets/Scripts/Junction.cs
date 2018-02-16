@@ -11,6 +11,10 @@ public class Junction : MonoBehaviour {
 		Wires.Add(wire);
 	}
 
+	public void removeWire(Wire wire) {
+		Wires.Remove(wire);
+	}
+
 	public Wire getWireOnDirection(Direction direction) {
 		Wire smallestAngleWire = null;
 		float smallestAngle = 90.0f;
@@ -44,7 +48,6 @@ public class Junction : MonoBehaviour {
 			if (wire.endNode == this)
 				wireDirection *= -1;
 			float angle = Vector3.Angle(wireDirection, directionVector);
-			Debug.Log(angle);
 			if (angle < smallestAngle) {
 				smallestAngle = angle;
 				smallestAngleWire = wire;
