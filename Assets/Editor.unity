@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 119750301}
   - component: {fileID: 119750305}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ada224887df4206a281e7496bded43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  editorController: {fileID: 0}
 --- !u!114 &119750302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,7 +634,7 @@ GameObject:
   - component: {fileID: 589973280}
   - component: {fileID: 589973279}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Speaker Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,6 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ada224887df4206a281e7496bded43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  editorController: {fileID: 0}
 --- !u!114 &589973281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,8 +965,9 @@ GameObject:
   - component: {fileID: 1487090876}
   - component: {fileID: 1487090875}
   - component: {fileID: 1487090878}
+  - component: {fileID: 1487090879}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Test Level Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,7 +1030,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1487090876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1487090879}
+        m_MethodName: TestLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1487090876
@@ -1082,6 +1096,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1487090879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1487090873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ada224887df4206a281e7496bded43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorController: {fileID: 756566194}
 --- !u!1 &1662126030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1201,7 @@ GameObject:
   - component: {fileID: 1864107259}
   - component: {fileID: 1864107258}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Electron Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
