@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 enum Mode {
@@ -20,6 +21,8 @@ public class EditorController : MonoBehaviour {
 	private List<Wire> Wires;
 	private GameLevel gameLevel;
 	[SerializeField]
+	EventSystem eventSystem;
+	[SerializeField]
 	GameObject JunctionPrefab;
 
 	void Start () {
@@ -29,8 +32,10 @@ public class EditorController : MonoBehaviour {
 	}
 	
 	void Update () {
-		Vector3 position = getWorldPosition(Input.mousePosition);
-
+		Vector3 position = getWorldPosition (Input.mousePosition);
+		if (eventSystem.currentSelectedGameObject != null){
+			return;
+		}
 		switch (mode) {
 			case Mode.Selecting:
 				if (Input.GetButtonDown("Fire1")) {
