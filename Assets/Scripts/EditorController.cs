@@ -12,19 +12,24 @@ public class EditorController : MonoBehaviour {
 	private const float SELECTION_RADIUS_PIXELS = 20.0f;
 	private const float WIRE_SELECTION_DISTANCE = 10.0f;
 	private Junction selectedJunction = null;
-	private List<Junction> Junctions;
-	private List<Wire> Wires;
 	private Mode mode = Mode.Selecting;
 	private int nextWireId;
 	private int nextJunctionId;
+	private List<Junction> Junctions;
+	private List<Wire> Wires;
+	private GameLevel gameLevel;
 
-	public GameObject JunctionPrefab;
-	public GameObject SpeakerPrefab;
-	public GameObject WirePrefab;
+	[SerializeField]
+	GameObject JunctionPrefab;
+	[SerializeField]
+	GameObject SpeakerPrefab;
+	[SerializeField]
+	GameObject WirePrefab;
 
 	void Start () {
-		Junctions = new List<Junction>();
-		Wires = new List<Wire>();
+		gameLevel = new GameLevel();
+		Junctions = gameLevel.Junctions;
+		Wires = gameLevel.Wires;
 	}
 	
 	void Update () {
@@ -98,6 +103,10 @@ public class EditorController : MonoBehaviour {
 				}
 				break;
 		}
+	}
+
+	public void SaveTemporaryLevel() {
+		Serializer.SaveTemporaryLevel(gameLevel);
 	}
 
 	void removeRedundantWiresFrom(Junction junction) {
