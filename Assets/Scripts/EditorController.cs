@@ -13,18 +13,14 @@ public class EditorController : MonoBehaviour {
 	private const float WIRE_SELECTION_DISTANCE = 10.0f;
 	private Junction selectedJunction = null;
 	private Mode mode = Mode.Selecting;
+	private WireType SelectedWireType;
 	private int nextWireId;
 	private int nextJunctionId;
 	private List<Junction> Junctions;
 	private List<Wire> Wires;
 	private GameLevel gameLevel;
-
 	[SerializeField]
 	GameObject JunctionPrefab;
-	[SerializeField]
-	GameObject SpeakerPrefab;
-	[SerializeField]
-	GameObject WirePrefab;
 
 	void Start () {
 		gameLevel = new GameLevel();
@@ -43,7 +39,7 @@ public class EditorController : MonoBehaviour {
 						if (nearby(getScreenPosition(junction.transform.position),
 							Input.mousePosition)) {
 							selectedJunction = addJunction(position);
-							addWire(junction, selectedJunction);
+							addWire(junction, selectedJunction,SelectedWireType);
 							mode = Mode.PlacingJunction;
 							break;
 						}
@@ -53,7 +49,7 @@ public class EditorController : MonoBehaviour {
 						if (wire == null) {
 							Junction startNode = addJunction(position);
 							Junction endNode = addJunction(position);
-							addWire(startNode, endNode);
+							addWire(startNode, endNode,SelectedWireType);
 							selectedJunction = endNode;
 							mode = Mode.PlacingJunction;
 						} else {
@@ -170,8 +166,12 @@ public class EditorController : MonoBehaviour {
 		return junction;
 	}
 
-	Wire addWire(Junction startNode, Junction endNode) {
-		Wire wire = Instantiate(WirePrefab).GetComponent<Wire>();
+	public void SelectWireType(WireType wireType){
+		this.SelectedWireType = wireType;
+	}
+
+	Wire addWire(Junction startNode, Junction endNode, WireType wireType) {
+		Wire wire = Instantiate(Wire.getPrefab(wireType)).GetComponent<Wire>();
 		wire.startNode = startNode;
 		wire.endNode = endNode;
 		wire.id = nextWireId++;

@@ -13,7 +13,30 @@ public class Wire : MonoBehaviour {
 
 	public float tolerance = 0.2f;
 	bool triggered = false;
-	
+
+	public static GameObject getPrefab(WireType wt){
+		GameObject prefab;
+		switch (wt) {
+		case WireType.LED:
+			prefab = Resources.Load("led") as GameObject;
+			break;
+		case WireType.Resistor:
+			prefab = Resources.Load("resistor") as GameObject;
+			break;
+		case WireType.Capacitor:
+			prefab = Resources.Load("Capacitor") as GameObject;
+			break;
+		case WireType.Speaker:
+			prefab = Resources.Load("Speaker") as GameObject;
+			break;
+		default:
+		case WireType.Plain:
+			prefab = Resources.Load("wire") as GameObject;
+			break;
+		}
+		return prefab;
+	}
+
 	public void Start() {
 		this.ac = AudioController.instance;
 	}
