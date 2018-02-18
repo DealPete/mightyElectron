@@ -46,8 +46,8 @@ public class EditorController : MonoBehaviour {
 					if (selectedJunction == null) {
 						Wire wire = getWireUnderCursor();
 						if (wire == null) {
-							Junction endNode = addJunction(position);
 							Junction startNode = addJunction(position);
+							Junction endNode = addJunction(position);
 							addWire(startNode, endNode);
 							selectedJunction = endNode;
 							mode = Mode.PlacingJunction;
@@ -92,11 +92,35 @@ public class EditorController : MonoBehaviour {
 							combiningJunction.addWire(wire);
 						}
 						remove(selectedJunction);
+						removeRedundantWiresFrom(combiningJunction);
 					}
 					mode = Mode.Selecting;
 				}
 				break;
 		}
+	}
+
+	void removeRedundantWiresFrom(Junction junction) {
+		bool removedWire;
+		do {
+			List<Junction> connectedNodes = new List<Junction>();
+			connectedNodes.Add(junction);
+			removedWire = false;
+			foreach (Wire wire in junction.Wires) {
+				Junction otherNode;
+				if (wire.startNode == junction)
+					otherNode = wire.endNode;
+				else
+					otherNode = wire.startNode;
+				if (connectedNodes.Contains(otherNode)) {
+					remove(wire);
+					removedWire = true;
+					break;
+				} else {
+					connectedNodes.Add(otherNode);
+				}
+			}
+		} while (removedWire);
 	}
 
 	Wire getWireUnderCursor() {
