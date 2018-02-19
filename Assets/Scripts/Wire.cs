@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wire : MonoBehaviour {
-	public int id;
 	public AudioController ac;
+	public WireType wireType;
 	public int resistance = 0;
 	public Junction startNode;
 	public Junction endNode;
@@ -14,7 +14,7 @@ public class Wire : MonoBehaviour {
 	public float tolerance = 0.2f;
 	bool triggered = false;
 
-	public static GameObject getPrefab(WireType wt){
+	public static GameObject getPrefab(WireType wt) {
 		GameObject prefab;
 		switch (wt) {
 		case WireType.LED:

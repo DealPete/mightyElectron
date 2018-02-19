@@ -9,21 +9,15 @@ enum Mode {
 	PlacingJunction
 }
 
-public class EditorController : MonoBehaviour {
+public class EditorController : LevelController {
 	private const float SELECTION_RADIUS_PIXELS = 20.0f;
 	private const float WIRE_SELECTION_DISTANCE = 10.0f;
 	private Junction selectedJunction = null;
 	private Mode mode = Mode.Selecting;
 	private WireType SelectedWireType;
-	private int nextWireId;
-	private int nextJunctionId;
-	private List<Junction> Junctions;
-	private List<Wire> Wires;
-	private GameLevel gameLevel;
+
 	[SerializeField]
 	EventSystem eventSystem;
-	[SerializeField]
-	GameObject JunctionPrefab;
 
 	void Start () {
 		gameLevel = new GameLevel();
@@ -33,7 +27,7 @@ public class EditorController : MonoBehaviour {
 	
 	void Update () {
 		Vector3 position = getWorldPosition (Input.mousePosition);
-		if (eventSystem.currentSelectedGameObject != null){
+		if (eventSystem.currentSelectedGameObject != null) {
 			return;
 		}
 		switch (mode) {
@@ -44,7 +38,7 @@ public class EditorController : MonoBehaviour {
 						if (nearby(getScreenPosition(junction.transform.position),
 							Input.mousePosition)) {
 							selectedJunction = addJunction(position);
-							addWire(junction, selectedJunction,SelectedWireType);
+							hookup(junction, selectedJunction, SelectedWireType);
 							mode = Mode.PlacingJunction;
 							break;
 						}
@@ -54,11 +48,11 @@ public class EditorController : MonoBehaviour {
 						if (wire == null) {
 							Junction startNode = addJunction(position);
 							Junction endNode = addJunction(position);
-							addWire(startNode, endNode,SelectedWireType);
+							hookup(startNode, endNode, SelectedWireType);
 							selectedJunction = endNode;
 							mode = Mode.PlacingJunction;
 						} else {
-							remove(wire);
+							gameLevel.remove(wire);
 						}
 					}
 				}
@@ -97,7 +91,7 @@ public class EditorController : MonoBehaviour {
 							}
 							combiningJunction.addWire(wire);
 						}
-						remove(selectedJunction);
+						gameLevel.remove(selectedJunction);
 						removeRedundantWiresFrom(combiningJunction);
 					}
 					mode = Mode.Selecting;
@@ -123,7 +117,7 @@ public class EditorController : MonoBehaviour {
 				else
 					otherNode = wire.startNode;
 				if (connectedNodes.Contains(otherNode)) {
-					remove(wire);
+					gameLevel.remove(wire);
 					removedWire = true;
 					break;
 				} else {
@@ -162,48 +156,8 @@ public class EditorController : MonoBehaviour {
 		return null;
 	}
 
- 	Junction addJunction(Vector3 position) {
-		Junction junction = Instantiate (JunctionPrefab, position, Quaternion.identity).GetComponent<Junction> ();
-		junction.id = nextJunctionId++;
-		junction.transform.position = position;
-		
-		Junctions.Add(junction);
-		return junction;
-	}
-
-	public void SelectWireType(WireType wireType){
+	public void SelectWireType(WireType wireType) {
 		this.SelectedWireType = wireType;
-	}
-
-	Wire addWire(Junction startNode, Junction endNode, WireType wireType) {
-		Wire wire = Instantiate(Wire.getPrefab(wireType)).GetComponent<Wire>();
-		wire.startNode = startNode;
-		wire.endNode = endNode;
-		wire.id = nextWireId++;
-		Wires.Add(wire);
-
-		startNode.addWire(wire);
-		endNode.addWire(wire);
-
-		return wire;
-	}
-
-	void remove(Wire wire) {
-		Wires.Remove(wire);
-		wire.startNode.removeWire(wire);
-		if (wire.startNode.Wires.Count == 0) {
-			remove(wire.startNode);
-		}
-		wire.endNode.removeWire(wire);
-		if (wire.endNode.Wires.Count == 0) {
-			remove(wire.endNode);
-		}
-		Destroy(wire.gameObject);
-	}
-
-	void remove(Junction junction) {
-		Junctions.Remove(junction);
-		Destroy(junction.gameObject);
 	}
 
 	bool nearbyWorld(Vector3 vec1, Vector3 vec2) {
