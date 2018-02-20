@@ -3,8 +3,8 @@ using System.IO;
 using UnityEngine;
 
 public class Serializer {
-	public static GameLevel LoadTemporaryLevel(LevelController levelController) {
-		GameLevel gameLevel = new GameLevel();
+	public static GameLevel LoadTemporaryLevel(Prefabs prefabs) {
+		GameLevel gameLevel = new GameLevel(prefabs);
 		BinaryReader br;
 		
 		try {
@@ -19,16 +19,14 @@ public class Serializer {
 		for(int i = 0; i < junctionCount; i++) {
 			float x = br.ReadSingle();
 			float y = br.ReadSingle();
-			gameLevel.Junctions.Add(
-				levelController.addJunction(new Vector3(x, y, 0)));
+			gameLevel.addJunction(new Vector3(x, y, 0));
 		}
 
 		int wireCount = br.ReadInt32();
 		for(int i = 0; i < wireCount; i++) {
 			Junction startNode = gameLevel.Junctions[br.ReadInt32()];
 			Junction endNode = gameLevel.Junctions[br.ReadInt32()];
-			gameLevel.Wires.Add(
-				levelController.hookup(startNode, endNode, WireType.Plain));
+			gameLevel.hookup(startNode, endNode, WireType.Plain);
 		}
 
 		br.Close();

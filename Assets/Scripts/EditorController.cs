@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 enum Mode {
 	Selecting,
 	PlacingJunction
 }
 
-public class EditorController : LevelController {
+public class EditorController : MonoBehaviour {
+	[SerializeField]
+	Prefabs prefabs;
+
+	public GameLevel gameLevel;
+
 	private const float SELECTION_RADIUS_PIXELS = 20.0f;
 	private const float WIRE_SELECTION_DISTANCE = 10.0f;
 	private Junction selectedJunction = null;
@@ -20,9 +24,7 @@ public class EditorController : LevelController {
 	EventSystem eventSystem;
 
 	void Start () {
-		gameLevel = new GameLevel();
-		Junctions = gameLevel.Junctions;
-		Wires = gameLevel.Wires;
+		gameLevel = new GameLevel(prefabs);
 	}
 	
 	void Update () {
@@ -34,11 +36,11 @@ public class EditorController : LevelController {
 			case Mode.Selecting:
 				if (Input.GetButtonDown("Fire1")) {
 					selectedJunction = null;
-					foreach (Junction junction in Junctions) {
+					foreach (Junction junction in gameLevel.Junctions) {
 						if (nearby(getScreenPosition(junction.transform.position),
 							Input.mousePosition)) {
-							selectedJunction = addJunction(position);
-							hookup(junction, selectedJunction, SelectedWireType);
+							selectedJunction = gameLevel.addJunction(position);
+							gameLevel.hookup(junction, selectedJunction, SelectedWireType);
 							mode = Mode.PlacingJunction;
 							break;
 						}
@@ -46,9 +48,9 @@ public class EditorController : LevelController {
 					if (selectedJunction == null) {
 						Wire wire = getWireUnderCursor();
 						if (wire == null) {
-							Junction startNode = addJunction(position);
-							Junction endNode = addJunction(position);
-							hookup(startNode, endNode, SelectedWireType);
+							Junction startNode = gameLevel.addJunction(position);
+							Junction endNode = gameLevel.addJunction(position);
+							gameLevel.hookup(startNode, endNode, SelectedWireType);
 							selectedJunction = endNode;
 							mode = Mode.PlacingJunction;
 						} else {
@@ -57,7 +59,7 @@ public class EditorController : LevelController {
 					}
 				}
 				if (Input.GetButtonDown("Fire2")) {
-					foreach (Junction junction in Junctions) {
+					foreach (Junction junction in gameLevel.Junctions) {
 						if (nearby(getScreenPosition(junction.transform.position),
 							Input.mousePosition)) {
 							selectedJunction = junction;
@@ -75,7 +77,7 @@ public class EditorController : LevelController {
 				}
 				if (Input.GetButtonDown("Fire1")) {
 					Junction combiningJunction = null;
-					foreach (Junction junction in Junctions) {
+					foreach (Junction junction in gameLevel.Junctions) {
 						if (junction != selectedJunction &&
 							nearbyWorld(position, junction.transform.position)) {
 							combiningJunction = junction;
@@ -132,7 +134,7 @@ public class EditorController : LevelController {
 		Wire closestWire = null;
 		float closestWireDistance = float.PositiveInfinity;
 
-		foreach (Wire wire in Wires) {
+		foreach (Wire wire in gameLevel.Wires) {
 			Vector3 start = getScreenPosition(wire.startNode.transform.position);
 			Vector3 end = getScreenPosition(wire.endNode.transform.position);
 			Vector3 normal = end - start;
@@ -165,6 +167,7 @@ public class EditorController : LevelController {
 	}
 
 	bool nearby(Vector3 vec1, Vector3 vec2) {
+		Debug.Log("vec1 " + vec1 + " vec2 " + vec2);
 		float distance = Vector3.Distance(vec1, vec2);
 		return distance <= SELECTION_RADIUS_PIXELS;
 	}

@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 1692044461}
   - component: {fileID: 1692044460}
   - component: {fileID: 1692044462}
+  - component: {fileID: 1692044463}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -580,24 +581,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfc3c8547b0c00469155318711b2068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ac: {fileID: 0}
+  prefabs: {fileID: 1692044463}
   sign: {fileID: 1193996606}
-  AgentPrefab: {fileID: 1091636258866834, guid: fee806b1ae42c4a34992520c52bce6ba,
-    type: 2}
-  WirePrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70, type: 2}
-  LEDPrefab: {fileID: 1235363586470904, guid: e5b3c20b0449fd449adc8f15f5afca3f, type: 2}
-  ResistorPrefab: {fileID: 1714357849886122, guid: ce16f66a7571f414b90eca467ccbe300,
-    type: 2}
-  CapacitorPrefab: {fileID: 1220066867002470, guid: 8392933d0a21299469cfdd6ad66b4833,
-    type: 2}
-  JunctionPrefab: {fileID: 1364530030426724, guid: 4fbdf22fbb40ad743bd9edefecd91e80,
-    type: 2}
-  SpeakerPrefab: {fileID: 1203174649240988, guid: 1cd4832cb105c104aba931dab0df708d,
-    type: 2}
+  ac: {fileID: 0}
   LEDtotal: 0
-  Agents: []
-  Junctions: []
-  Wires: []
 --- !u!4 &1692044461
 Transform:
   m_ObjectHideFlags: 0
@@ -624,3 +611,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputThreshold: 0.2
   avatar: {fileID: 0}
+--- !u!114 &1692044463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692044459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aed4b167eb2143a4823e9b4f4fbe077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AgentPrefab: {fileID: 1091636258866834, guid: fee806b1ae42c4a34992520c52bce6ba,
+    type: 2}
+  WirePrefab: {fileID: 1446155253960176, guid: dd219dab7d0188645be222e7d593cf70, type: 2}
+  LEDPrefab: {fileID: 1235363586470904, guid: e5b3c20b0449fd449adc8f15f5afca3f, type: 2}
+  ResistorPrefab: {fileID: 1714357849886122, guid: ce16f66a7571f414b90eca467ccbe300,
+    type: 2}
+  CapacitorPrefab: {fileID: 1220066867002470, guid: 8392933d0a21299469cfdd6ad66b4833,
+    type: 2}
+  JunctionPrefab: {fileID: 1364530030426724, guid: 4fbdf22fbb40ad743bd9edefecd91e80,
+    type: 2}
+  SpeakerPrefab: {fileID: 1203174649240988, guid: 1cd4832cb105c104aba931dab0df708d,
+    type: 2}
