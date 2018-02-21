@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,7 +25,11 @@ public class EditorController : MonoBehaviour {
 	EventSystem eventSystem;
 
 	void Start () {
-		gameLevel = new GameLevel(prefabs);
+		if (File.Exists("level.tmp")) {
+			gameLevel = Serializer.LoadTemporaryLevel(prefabs);
+		} else {
+			gameLevel = new GameLevel(prefabs);
+		}
 	}
 	
 	void Update () {
@@ -167,7 +172,6 @@ public class EditorController : MonoBehaviour {
 	}
 
 	bool nearby(Vector3 vec1, Vector3 vec2) {
-		Debug.Log("vec1 " + vec1 + " vec2 " + vec2);
 		float distance = Vector3.Distance(vec1, vec2);
 		return distance <= SELECTION_RADIUS_PIXELS;
 	}

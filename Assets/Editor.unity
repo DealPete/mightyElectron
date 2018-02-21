@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd5a679e0cd624991fda0d44c410d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorController: {fileID: 0}
+  editorController: {fileID: 1322263746}
   wireType: 0
 --- !u!114 &309581656
 MonoBehaviour:
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd5a679e0cd624991fda0d44c410d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorController: {fileID: 0}
+  editorController: {fileID: 1322263746}
   wireType: 1
 --- !u!114 &540674594
 MonoBehaviour:
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd5a679e0cd624991fda0d44c410d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorController: {fileID: 0}
+  editorController: {fileID: 1322263746}
   wireType: 4
 --- !u!1 &997640099
 GameObject:
@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd5a679e0cd624991fda0d44c410d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorController: {fileID: 0}
+  editorController: {fileID: 1322263746}
   wireType: 3
 --- !u!114 &1664421484
 MonoBehaviour:
@@ -2052,7 +2052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd5a679e0cd624991fda0d44c410d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorController: {fileID: 0}
+  editorController: {fileID: 1322263746}
   wireType: 2
 --- !u!114 &1781922282
 MonoBehaviour:

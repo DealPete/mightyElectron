@@ -14,6 +14,8 @@ public class StageController : MonoBehaviour {
 	[SerializeField]
 	Prefabs prefabs;
 
+	const int SCENE_EDITOR = 1;
+
 	public static bool playingEditorLevel = false;
 	private static int LAST_LEVEL = 3;
 	private static int level = 1;
@@ -23,8 +25,6 @@ public class StageController : MonoBehaviour {
 
 	public SignScript sign;
 	public AudioController ac;
-
-	public int LEDtotal = 0;
 
 	private List<Agent> Agents;
 	private GameState gameState;
@@ -43,15 +43,10 @@ public class StageController : MonoBehaviour {
 		if (playingEditorLevel)
 			agent.container = setupEditorLevel();
 		else {
+			gameLevel = new GameLevel(prefabs);
 			Junctions = new List<Junction>();
 			Wires = new List<Wire>();
 			agent.container = setupLevel(level);
-		}
-
-		foreach (Wire wire in Wires) {
-			if (wire.wireType == WireType.LED) {
-				LEDtotal += 1;
-			}
 		}
 
 		agent.containerType = ContainerType.Junction;
@@ -97,7 +92,7 @@ public class StageController : MonoBehaviour {
 					}
 				}
 
-				if (LED.activeCount == LEDtotal) {
+				if (LED.activeCount == gameLevel.LEDTotal) {
 					if (LAST_LEVEL < level) {
 						gameState = GameState.GameComplete;
 						sign.text = "LEVEL COMPLETE! Press Fire to continue";
@@ -116,13 +111,14 @@ public class StageController : MonoBehaviour {
 
 			case GameState.LevelComplete:
 				if (Input.GetButton("Fire1")) {
+					if (playingEditorLevel) {
+						sign.text = "here";
+						SceneManager.LoadScene(0);
+					}
+						
 					StageController.level += 1;
 					restartScene();
 				}
-				break;
-
-			default:
-				sign.text = "You're in the level editor.";
 				break;
 		}
 	}
@@ -156,7 +152,7 @@ public class StageController : MonoBehaviour {
 		switch (wireType) {
 			case WireType.LED:
 				prefab = prefabs.LEDPrefab;
-				LEDtotal += 1;
+				gameLevel.LEDTotal += 1;
 				break;
 			case WireType.Resistor:
 				prefab = prefabs.ResistorPrefab;
@@ -166,7 +162,7 @@ public class StageController : MonoBehaviour {
 			break;
 			case WireType.Speaker:
 				prefab = prefabs.SpeakerPrefab;
-				LEDtotal += 1;
+				gameLevel.LEDTotal += 1;
 			break;
 			default:
 			case WireType.Plain:

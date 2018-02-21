@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 public class GameLevel {
 	Prefabs prefabs;
+	public int LEDTotal;
 	public int startJunction;
 	public List<Junction> Junctions;
 	public List<Wire> Wires;
 	
 	public GameLevel(Prefabs prefabsSingleton) {
 		prefabs = prefabsSingleton;
+		LEDTotal = 0;
 		startJunction = 0;
 		Junctions = new List<Junction>();
 		Wires = new List<Wire>();
@@ -26,6 +28,7 @@ public class GameLevel {
 		switch (wireType) {
 			case WireType.LED:
 				prefab = prefabs.LEDPrefab;
+				LEDTotal += 1;
 				break;
 			case WireType.Resistor:
 				prefab = prefabs.ResistorPrefab;
@@ -35,6 +38,7 @@ public class GameLevel {
 			break;
 			case WireType.Speaker:
 				prefab = prefabs.SpeakerPrefab;
+				LEDTotal += 1;
 			break;
 			default:
 			case WireType.Plain:
@@ -44,6 +48,10 @@ public class GameLevel {
 			
 		Wire wire = prefabs.newWire(prefab);
 		wire.wireType = wireType;
+
+		if (wire.wireType == WireType.Resistor) {
+			wire.resistance = 1;
+		}
 
 		wire.startNode = source;
 		wire.endNode = target;
@@ -63,6 +71,10 @@ public class GameLevel {
 		wire.endNode.removeWire(wire);
 		if (wire.endNode.Wires.Count == 0) {
 			remove(wire.endNode);
+		}
+		if (wire.wireType == WireType.LED
+			|| wire.wireType == WireType.Speaker) {
+			LEDTotal += 1;
 		}
 		Object.Destroy(wire.gameObject);
 	}

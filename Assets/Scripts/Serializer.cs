@@ -24,9 +24,10 @@ public class Serializer {
 
 		int wireCount = br.ReadInt32();
 		for(int i = 0; i < wireCount; i++) {
+			WireType wireType = (WireType)br.ReadInt32();
 			Junction startNode = gameLevel.Junctions[br.ReadInt32()];
 			Junction endNode = gameLevel.Junctions[br.ReadInt32()];
-			gameLevel.hookup(startNode, endNode, WireType.Plain);
+			gameLevel.hookup(startNode, endNode, wireType);
 		}
 
 		br.Close();
@@ -52,6 +53,7 @@ public class Serializer {
 		}
 		bw.Write(gameLevel.Wires.Count);
 		foreach (var wire in gameLevel.Wires) {
+			bw.Write((int)wire.wireType);
 			bw.Write(gameLevel.Junctions.FindIndex( w => w == wire.startNode ));
 			bw.Write(gameLevel.Junctions.FindIndex( w => w == wire.endNode ));
 		}
