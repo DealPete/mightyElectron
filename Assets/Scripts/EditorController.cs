@@ -111,6 +111,11 @@ public class EditorController : MonoBehaviour {
 		Serializer.SaveTemporaryLevel(gameLevel);
 	}
 
+	public void clearLevel() {
+		gameLevel.selfDestruct();
+		gameLevel = new GameLevel(prefabs);
+	}
+
 	void removeRedundantWiresFrom(Junction junction) {
 		bool removedWire;
 		do {

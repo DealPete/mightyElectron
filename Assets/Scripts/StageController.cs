@@ -95,10 +95,10 @@ public class StageController : MonoBehaviour {
 				if (LED.activeCount == gameLevel.LEDTotal) {
 					if (LAST_LEVEL < level) {
 						gameState = GameState.GameComplete;
-						sign.text = "LEVEL COMPLETE! Press Fire to continue";
+						sign.text = "You've won! CONGRATULATIONS";
 					} else {
 						gameState = GameState.LevelComplete;
-						sign.text = "You've won! CONGRATULATIONS";
+						sign.text = "LEVEL COMPLETE! Press Fire to continue";
 					}
 				}
 				break;
@@ -112,12 +112,11 @@ public class StageController : MonoBehaviour {
 			case GameState.LevelComplete:
 				if (Input.GetButton("Fire1")) {
 					if (playingEditorLevel) {
-						sign.text = "here";
-						SceneManager.LoadScene(0);
+						SceneManager.LoadScene(SCENE_EDITOR);
+					} else {
+						StageController.level += 1;
+						restartScene();
 					}
-						
-					StageController.level += 1;
-					restartScene();
 				}
 				break;
 		}

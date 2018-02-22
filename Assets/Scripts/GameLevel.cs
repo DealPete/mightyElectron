@@ -62,6 +62,16 @@ public class GameLevel {
 		Wires.Add(wire);
 	}
 
+	public void selfDestruct() {
+		while (Wires.Count > 0) {
+			remove(Wires[0]);
+		}
+
+		while (Junctions.Count > 0) {
+			remove(Junctions[0]);
+		}
+	}
+
 	public void remove(Wire wire) {
 		Wires.Remove(wire);
 		wire.startNode.removeWire(wire);

@@ -23,4 +23,8 @@ public class UIScript : MonoBehaviour {
 		StageController.playingEditorLevel = true;
 		SceneManager.LoadScene(SCENE_GAMEPLAY);
 	}
+
+	public void ClearLevel() {
+		editorController.clearLevel();
+	}
 }
